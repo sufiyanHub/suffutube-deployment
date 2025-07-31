@@ -6,209 +6,157 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dummy Data ---
     const username = "Sufiyan Mohd";
 
-    // Regular videos (can be a mix, still include some tech/educational)
+    // All videos are now focused on Gaming, Songs, and Movie Trailers
     const videos = [
         {
-            thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg', // Placeholder for a generic video
-            title: 'Learn HTML in 10 Minutes - Basics for Beginners',
-            channelName: 'Sufiyan Mohd',
-            channelAvatar: 'https://i.pravatar.cc/30?img=68', // Sufiyan Mohd's avatar
-            views: '1.2M',
-            uploaded: '1 year ago'
+            thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg', // Gaming: New RPG Trailer
+            title: 'Epic RPG Trailer 2025 - "Chronicles of Eldoria"',
+            channelName: 'Gaming Nexus',
+            channelAvatar: 'https://i.pravatar.cc/30?img=1',
+            views: '5.2M',
+            uploaded: '3 weeks ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/qdsz66kU3iY/hqdefault.jpg',
-            title: 'CSS Grid Crash Course 2024 | Modern CSS Layouts',
-            channelName: 'Web Dev Simplified',
-            channelAvatar: 'https://i.pravatar.cc/30?img=33',
-            views: '850K',
-            uploaded: '6 months ago'
-        },
-        {
-            thumbnail: 'https://i.ytimg.com/vi/W6NZfCO5sks/hqdefault.jpg',
-            title: 'JavaScript Tutorial for Beginners | Full Course 2024',
-            channelName: 'freeCodeCamp.org',
-            channelAvatar: 'https://i.pravatar.cc/30?img=22',
-            views: '3.5M',
-            uploaded: '2 years ago'
-        },
-        {
-            thumbnail: 'https://i.ytimg.com/vi/PkZNo7MFoBs/hqdefault.jpg',
-            title: 'React JS Crash Course 2024 | Build a Portfolio Website',
-            channelName: 'Traversy Media',
-            channelAvatar: 'https://i.pravatar.cc/30?img=11',
-            views: '1.1M',
-            uploaded: '9 months ago'
-        },
-        {
-            thumbnail: 'https://i.ytimg.com/vi/ZY3JjV5Lw5k/hqdefault.jpg',
-            title: 'Node.js Express & MongoDB Tutorial - Full Stack Guide',
-            channelName: 'The Net Ninja',
-            channelAvatar: 'https://i.pravatar.cc/30?img=55',
-            views: '700K',
-            uploaded: '1 year ago'
-        },
-        {
-            thumbnail: 'https://i.ytimg.com/vi/Pj7qsU-292k/hqdefault.jpg',
-            title: 'Python for Everybody - Full University Course',
+            thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg', // Music: Pop Song
+            title: 'New Pop Sensation - "Rhythm of My Heart" Official Music Video',
             channelName: 'Sufiyan Mohd',
             channelAvatar: 'https://i.pravatar.cc/30?img=68',
-            views: '2.5M',
-            uploaded: '3 years ago'
+            views: '10.8M',
+            uploaded: '2 weeks ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/y-lF044r6Jc/hqdefault.jpg',
-            title: 'Deep Learning Specialization - Andrew Ng (Full Course)',
-            channelName: 'DeepLearning.AI',
-            channelAvatar: 'https://i.pravatar.cc/30?img=77',
-            views: '900K',
-            uploaded: '1.5 years ago'
-        },
-        {
-            thumbnail: 'https://i.ytimg.com/vi/rfscVS0vtbw/hqdefault.jpg',
-            title: 'Linux Command Line Tutorial for Beginners',
-            channelName: 'Sufiyan Mohd',
-            channelAvatar: 'https://i.pravatar.cc/30?img=68',
-            views: '450K',
-            uploaded: '8 months ago'
-        },
-        {
-            thumbnail: 'https://i.ytimg.com/vi/nu_pC_CUEiE/hqdefault.jpg',
-            title: 'Figma UI UX Design Tutorial for Beginners 2024',
-            channelName: 'DesignCode',
-            channelAvatar: 'https://i.pravatar.cc/30?img=88',
-            views: '300K',
-            uploaded: '4 months ago'
-        },
-        {
-            thumbnail: 'https://i.ytimg.com/vi/hQn0e1qCj90/hqdefault.jpg',
-            title: 'Web Components Crash Course - Build Reusable UI',
-            channelName: 'Brad Traversy',
-            channelAvatar: 'https://i.pravatar.cc/30?img=11',
-            views: '180K',
-            uploaded: '2 months ago'
-        },
-        {
-            thumbnail: 'https://i.ytimg.com/vi/lQ0gQp9k3-g/hqdefault.jpg',
-            title: 'How to build a SaaS application with Next.js',
-            channelName: 'Sufiyan Mohd',
-            channelAvatar: 'https://i.pravatar.cc/30?img=68',
-            views: '75K',
+            thumbnail: 'https://i.ytimg.com/vi/Go8y0V6h_Hk/hqdefault.jpg', // Movie: Action Trailer
+            title: 'Action Blockbuster 2025 - "Urban Warfare" Final Trailer',
+            channelName: 'Cinema Central',
+            channelAvatar: 'https://i.pravatar.cc/30?img=3',
+            views: '7.1M',
             uploaded: '1 month ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/V_fGg4IeP2E/hqdefault.jpg',
-            title: 'The Future of AI: What to Expect in 2025',
-            channelName: 'AI Explorer',
-            channelAvatar: 'https://i.pravatar.cc/30?img=99',
-            views: '1.5M',
-            uploaded: '3 months ago'
-        }
-    ];
-
-    // Dummy Trending Videos Data - Now with more Songs and Movies!
-    const trendingVideos = [
-        {
-            thumbnail: 'https://i.ytimg.com/vi/9bZkp7q19f0/hqdefault.jpg', // Placeholder for music video
-            title: 'Top 10 Trending Bollywood Songs - July 2025 Chartbusters',
-            channelName: 'Music Hits India',
-            channelAvatar: 'https://i.pravatar.cc/30?img=18',
-            views: '15.2M',
-            uploaded: '2 days ago'
+            thumbnail: 'https://i.ytimg.com/vi/V_fGg4IeP2E/hqdefault.jpg', // Gaming: Stream Highlights
+            title: 'Hilarious Gaming Moments - Stream Highlights #42',
+            channelName: 'Pro Gamer Livestream',
+            channelAvatar: 'https://i.pravatar.cc/30?img=4',
+            views: '2.9M',
+            uploaded: '4 days ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/d_ePzV5s40M/hqdefault.jpg', // Placeholder for movie trailer
-            title: 'Epic Sci-Fi Thriller 2025 - Official Trailer (Coming Soon)',
-            channelName: 'Movie Mania Trailers',
-            channelAvatar: 'https://i.pravatar.cc/30?img=28',
-            views: '8.1M',
+            thumbnail: 'https://i.ytimg.com/vi/PkZNo7MFoBs/hqdefault.jpg', // Music: Acoustic Cover
+            title: 'Soulful Acoustic Cover - "Fading Lights"',
+            channelName: 'Acoustic Vibes',
+            channelAvatar: 'https://i.pravatar.cc/30?img=5',
+            views: '1.5M',
             uploaded: '5 days ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/O_o7k5pXf_E/hqdefault.jpg', // Placeholder for song cover
-            title: 'Viral Pop Song - Acoustic Cover (You won\'t believe it!)',
-            channelName: 'Melody Makers',
-            channelAvatar: 'https://i.pravatar.cc/30?img=38',
-            views: '4.5M',
-            uploaded: '1 day ago'
+            thumbnail: 'https://i.ytimg.com/vi/nu_pC_CUEiE/hqdefault.jpg', // Movie: Horror Trailer
+            title: 'Terrifying Horror Film - "Whispers in the Dark" Official Teaser',
+            channelName: 'Sufiyan Mohd',
+            channelAvatar: 'https://i.pravatar.cc/30?img=68',
+            views: '3.4M',
+            uploaded: '3 weeks ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/D0yY10E0dOM/hqdefault.jpg', // Placeholder for movie review
-            title: 'Top 5 Must-Watch Action Movies of the Year - Review',
-            channelName: 'Film Fanatics',
-            channelAvatar: 'https://i.pravatar.cc/30?img=48',
-            views: '1.5M',
-            uploaded: '3 days ago'
-        },
-        {
-            thumbnail: 'https://i.ytimg.com/vi/A1B2C3D4E5F/hqdefault.jpg', // Placeholder for song lyrics video
-            title: 'Trending Hip-Hop Track - Official Lyric Video',
-            channelName: 'Global Beats',
-            channelAvatar: 'https://i.pravatar.cc/30?img=58',
-            views: '7.2M',
+            thumbnail: 'https://i.ytimg.com/vi/lQ0gQp9k3-g/hqdefault.jpg', // Gaming: Indie Game Review
+            title: 'Indie Game Gem: "Pixel Adventures" Full Review',
+            channelName: 'Indie Gamers Unite',
+            channelAvatar: 'https://i.pravatar.cc/30?img=7',
+            views: '800K',
             uploaded: '1 week ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/Xg9E5e_F9gU/hqdefault.jpg', // Placeholder for movie clip
-            title: 'Comedy Movie Highlight Reel - Best Scenes of 2025',
-            channelName: 'Laugh Out Loud Films',
-            channelAvatar: 'https://i.pravatar.cc/30?img=60',
-            views: '3.9M',
+            thumbnail: 'https://i.ytimg.com/vi/W6NZfCO5sks/hqdefault.jpg', // Music: K-Pop Dance Practice
+            title: 'K-Pop Superstars - "Blazing Fire" Dance Practice',
+            channelName: 'K-Pop Zone',
+            channelAvatar: 'https://i.pravatar.cc/30?img=8',
+            views: '9.1M',
+            uploaded: '6 days ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/qdsz66kU3iY/hqdefault.jpg', // Movie: Documentary Trailer
+            title: 'Powerful Documentary - "The Ocean\'s Cry" Trailer',
+            channelName: 'Sufiyan Mohd',
+            channelAvatar: 'https://i.pravatar.cc/30?img=68',
+            views: '1.1M',
+            uploaded: '2 months ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/rfscVS0vtbw/hqdefault.jpg', // Gaming: Esports Highlights
+            title: 'Top Esports Plays of the Month - Pro League Highlights',
+            channelName: 'Esports Arena',
+            channelAvatar: 'https://i.pravatar.cc/30?img=10',
+            views: '4.8M',
+            uploaded: '1 month ago'
+        }
+    ];
+
+    // Dummy Trending Videos Data - Also Gaming, Songs, and Movie Trailers
+    const trendingVideos = [
+        {
+            thumbnail: 'https://i.ytimg.com/vi/7wFwFwB4Y2A/hqdefault.jpg', // Music: Trending Song
+            title: 'Viral Dance Craze Song - "Beat Drop Anthem" (Official)',
+            channelName: 'Trending Tunes',
+            channelAvatar: 'https://i.pravatar.cc/30?img=11',
+            views: '25.3M',
+            uploaded: '1 day ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/Xg9E5e_F9gU/hqdefault.jpg', // Movie: Trending Trailer
+            title: 'The Mystery Thriller Everyone\'s Talking About - Official Trailer',
+            channelName: 'Cinematic Buzz',
+            channelAvatar: 'https://i.pravatar.cc/30?img=12',
+            views: '18.7M',
+            uploaded: '2 days ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/O_o7k5pXf_E/hqdefault.jpg', // Gaming: Popular Streamer
+            title: 'Live Streamer\'s Unforgettable Boss Fight Moment!',
+            channelName: 'Sufiyan Mohd',
+            channelAvatar: 'https://i.pravatar.cc/30?img=68',
+            views: '6.5M',
+            uploaded: '1 day ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/D0yY10E0dOM/hqdefault.jpg', // Music: Trending Remix
+            title: 'Summer Vibes Remix - "Sunset Groove" (Feat. DJ Flow)',
+            channelName: 'Remix Central',
+            channelAvatar: 'https://i.pravatar.cc/30?img=14',
+            views: '9.9M',
+            uploaded: '3 days ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/A1B2C3D4E5F/hqdefault.jpg', // Movie: Family Comedy Trailer
+            title: 'Heartwarming Family Comedy - "The Mishap Family" Trailer',
+            channelName: 'Family Fun Films',
+            channelAvatar: 'https://i.pravatar.cc/30?img=15',
+            views: '4.1M',
             uploaded: '4 days ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg', // Gaming: Game Launch Trailer
+            title: 'Highly Anticipated Game Launch Trailer: "Galactic Conquerors"',
+            channelName: 'Gaming World News',
+            channelAvatar: 'https://i.pravatar.cc/30?img=16',
+            views: '12.0M',
+            uploaded: '1 week ago'
         }
     ];
 
     const subscriptions = [
-        {
-            name: 'Web Dev Simplified',
-            avatar: 'https://i.pravatar.cc/30?img=33'
-        },
-        {
-            name: 'freeCodeCamp.org',
-            avatar: 'https://i.pravatar.cc/30?img=22'
-        },
-        {
-            name: 'Traversy Media',
-            avatar: 'https://i.pravatar.cc/30?img=11'
-        },
-        {
-            name: 'The Net Ninja',
-            avatar: 'https://i.pravatar.cc/30?img=55'
-        },
-        {
-            name: 'DeepLearning.AI',
-            avatar: 'https://i.pravatar.cc/30?img=77'
-        },
-        {
-            name: 'DesignCode',
-            avatar: 'https://i.pravatar.cc/30?img=88'
-        },
-        {
-            name: 'AI Explorer',
-            avatar: 'https://i.pravatar.cc/30?img=99'
-        },
-         {
-            name: username, // Add Sufiyan Mohd to subscriptions
-            avatar: 'https://i.pravatar.cc/30?img=68'
-        },
-        {
-            name: 'Music Hits India',
-            avatar: 'https://i.pravatar.cc/30?img=18'
-        },
-        {
-            name: 'Movie Mania Trailers',
-            avatar: 'https://i.pravatar.cc/30?img=28'
-        },
-        {
-            name: 'Melody Makers',
-            avatar: 'https://i.pravatar.cc/30?img=38'
-        },
-        {
-            name: 'Film Fanatics',
-            avatar: 'https://i.pravatar.cc/30?img=48'
-        }
+        { name: 'Gaming Nexus', avatar: 'https://i.pravatar.cc/30?img=1' },
+        { name: 'Sufiyan Mohd', avatar: 'https://i.pravatar.cc/30?img=68' },
+        { name: 'Cinema Central', avatar: 'https://i.pravatar.cc/30?img=3' },
+        { name: 'Pro Gamer Livestream', avatar: 'https://i.pravatar.cc/30?img=4' },
+        { name: 'Acoustic Vibes', avatar: 'https://i.pravatar.cc/30?img=5' },
+        { name: 'Indie Gamers Unite', avatar: 'https://i.pravatar.cc/30?img=7' },
+        { name: 'K-Pop Zone', avatar: 'https://i.pravatar.cc/30?img=8' },
+        { name: 'Esports Arena', avatar: 'https://i.pravatar.cc/30?img=10' },
+        { name: 'Trending Tunes', avatar: 'https://i.pravatar.cc/30?img=11' },
+        { name: 'Cinematic Buzz', avatar: 'https://i.pravatar.cc/30?img=12' },
+        { name: 'Remix Central', avatar: 'https://i.pravatar.cc/30?img=14' },
+        { name: 'Family Fun Films', avatar: 'https://i.pravatar.cc/30?img=15' },
+        { name: 'Gaming World News', avatar: 'https://i.pravatar.cc/30?img=16' }
     ];
-
 
     // Function to create a video card (unchanged)
     function createVideoCard(video) {
@@ -250,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
     trendingVideos.forEach(video => {
         trendingGrid.appendChild(createVideoCard(video));
     });
-
 
     // Render subscriptions
     subscriptions.forEach(sub => {
