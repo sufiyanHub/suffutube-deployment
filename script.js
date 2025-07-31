@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // All videos are now focused on Gaming, Songs, and Movie Trailers
     const videos = [
         {
-            thumbnail: 'https://youtu.be/PlzN8x2fBZU?si=nEvWrbjaEhw5razY', // Gaming: New RPG Trailer
+            // FIX: Replaced https://youtu.be/PlzN8x2fBZU?si=nEvWrbjaEhw5razY with a real thumbnail URL
+            thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg', // Gaming: New RPG Trailer (Used a generic one from your previous list)
             title: 'The Angrez 2 Comedy Scenes Back to Back ',
             channelName: 'Gaming Nexus',
             channelAvatar: 'https://i.pravatar.cc/30?img=1',
@@ -17,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
             uploaded: '3 weeks ago'
         },
         {
-            thumbnail: 'https://youtu.be/btlnivFoZOs?si=rsgYvT-Jl3De1P3e', // Music: Pop Song
+            // FIX: Replaced https://youtu.be/btlnivFoZOs?si=rsgYvT-Jl3De1P3e with a real thumbnail URL
+            thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg', // Music: Pop Song (Used a generic one from your previous list)
             title: 'PATNI NANAND AUR WEDDING ANNIVERSARY!',
             channelName: 'Sufiyan Mohd',
             channelAvatar: 'https://i.pravatar.cc/30?img=68',
@@ -49,7 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
             uploaded: '5 days ago'
         },
         {
-            thumbnail: 'https://youtu.be/6PYf8x74SFo?si=lG-hBC9RnM-g7Fto', // Movie: Horror Trailer
+            // FIX: Replaced https://youtu.be/6PYf8x74SFo?si=lG-hBC9RnM-g7Fto with a real thumbnail URL
+            thumbnail: 'https://i.ytimg.com/vi/nu_pC_CUEiE/hqdefault.jpg', // Movie: Horror Trailer (Used a generic one from your previous list)
             title: 'Pokémon: DP Sinnoh League Victors | EP32 The Semi-Final Frontier!',
             channelName: 'Sufiyan Mohd',
             channelAvatar: 'https://i.pravatar.cc/30?img=68',
@@ -65,7 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
             uploaded: '1 week ago'
         },
         {
-            thumbnail: 'https://youtu.be/iylvtGwPsEM?si=ccxr-ODA66166ngV', // Music: K-Pop Dance Practice
+            // FIX: Replaced https://youtu.be/iylvtGwPsEM?si=ccxr-ODA66166ngV with a real thumbnail URL
+            thumbnail: 'https://i.ytimg.com/vi/W6NZfCO5sks/hqdefault.jpg', // Music: K-Pop Dance Practice (Used a generic one from your previous list)
             title: 'Nanal Nagar STREET FOOD | Tolichowki, Quba Masjid',
             channelName: 'K-Pop Zone',
             channelAvatar: 'https://i.pravatar.cc/30?img=8',
@@ -125,7 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
             uploaded: '3 days ago'
         },
         {
-            thumbnail: 'https://youtu.be/Mw2o7bp5RO4?si=O5S69mf4eB--pIT7', // Movie: Family Comedy Trailer
+            // FIX: Replaced https://youtu.be/Mw2o7bp5RO4?si=O5S69mf4eB--pIT7 with a real thumbnail URL
+            thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg', // Movie: Family Comedy Trailer (Used a generic one from your previous list)
             title: 'Took 5 Trains and Ended Up in Rural Japan',
             channelName: 'Family Fun Films',
             channelAvatar: 'https://i.pravatar.cc/30?img=15',
@@ -170,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="video-info">
                     <h3 class="video-title">${video.title}</h3>
                     <p class="channel-name">${video.channelName}</p>
-                    <p class="video-meta">${video.views} views &bull; ${video.uploaded}</p>
+                    <p class="video-meta">${video.views} views • ${video.uploaded}</p>
                 </div>
             </div>
         `;
