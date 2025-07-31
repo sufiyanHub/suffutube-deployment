@@ -1,20 +1,66 @@
-name: Deploy to GitHub Pages
+name: Full CI/CD Pipeline - GH Pages & Docker
 
+# This workflow runs on pushes to the 'main' branch and can also be triggered manually
 on:
   push:
-    branches:
-      - main # Or 'master' if your default branch is master
+    branches: [main]
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+env:
+  # UPDATE THIS: Use your Docker Hub username and a suitable repository name for your Docker image
+  # Example: your-dockerhub-username/youtube-clone-frontend
+  DOCKER_IMAGE_NAME: sufiyanhub/youtube-clone-web # Suggested Docker Hub repo name
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  # --- Job 1: Deploy Static Site to GitHub Pages ---
+  deploy-gh-pages:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest # Runs on a fresh Ubuntu virtual machine
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout Code # Get your repository's code
+        uses: actions/checkout@v4
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./src # This tells it to publish the root directory of your repository
+      - name: Deploy Static Site # Use peaceiris action for GH Pages deployment
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Built-in token for permissions
+          publish_dir: ./src # Your website files are in the 'src' folder
+          publish_branch: gh-pages # Deploy to the 'gh-pages' branch (default for this action)
+
+  # --- Job 2: Build and Push Docker Image to Docker Hub ---
+  build-and-push-docker:
+    name: Build & Push Docker Image
+    runs-on: ubuntu-latest # Runs on a separate Ubuntu virtual machine
+
+    steps:
+      - name: Checkout Code # Get your repository's code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub # Authenticate with Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build Docker Image # Build the image, using 'src' as the build context
+        # This assumes your Dockerfile is at 'src/Dockerfile' and your static files are also in 'src/'
+        run: docker build -t ${{ env.DOCKER_IMAGE_NAME }}:latest ./src
+
+      - name: Push Docker Image # Push the built image to Docker Hub
+        run: docker push ${{ env.DOCKER_IMAGE_NAME }}:latest
+
+  # --- Job 3: Notify Slack on Docker Push Completion ---
+  notify-slack:
+    name: Notify Slack
+    needs: build-and-push-docker # This job will only run AFTER 'build-and-push-docker' completes
+    runs-on: ubuntu-latest
+    if: success() # Only run this notification if the previous job (Docker push) was successful
+
+    steps:
+      - name: Send Slack Notification via AWS Lambda # Use curl to send a POST request to your Lambda URL
+        run: |
+          curl -X POST "${{ secrets.LAMBDA_FUNCTION_URL }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "message": "✅ Docker image pushed to Docker Hub: '${{ env.DOCKER_IMAGE_NAME }}:latest' for repository ${{ github.repository }} (Commit: ${{ github.sha }})"
+          }'
+        env:
+          LAMBDA_FUNCTION_URL: ${{ secrets.LAMBDA_FUNCTION_URL }} # Your secret Lambda URL
