@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const videoGrid = document.getElementById('video-grid');
     const subscriptionsList = document.getElementById('subscriptions-list');
+    const trendingGrid = document.getElementById('trending-grid');
 
     // --- Dummy Data ---
     const username = "Sufiyan Mohd";
 
+    // Regular videos (can be a mix, still include some tech/educational)
     const videos = [
         {
-            thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg', // Placeholder image
+            thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg', // Placeholder for a generic video
             title: 'Learn HTML in 10 Minutes - Basics for Beginners',
             channelName: 'Sufiyan Mohd',
             channelAvatar: 'https://i.pravatar.cc/30?img=68', // Sufiyan Mohd's avatar
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             thumbnail: 'https://i.ytimg.com/vi/Pj7qsU-292k/hqdefault.jpg',
             title: 'Python for Everybody - Full University Course',
             channelName: 'Sufiyan Mohd',
-            channelAvatar: 'https://i.pravatar.cc/30?img=68', // Sufiyan Mohd's avatar
+            channelAvatar: 'https://i.pravatar.cc/30?img=68',
             views: '2.5M',
             uploaded: '3 years ago'
         },
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             thumbnail: 'https://i.ytimg.com/vi/rfscVS0vtbw/hqdefault.jpg',
             title: 'Linux Command Line Tutorial for Beginners',
             channelName: 'Sufiyan Mohd',
-            channelAvatar: 'https://i.pravatar.cc/30?img=68', // Sufiyan Mohd's avatar
+            channelAvatar: 'https://i.pravatar.cc/30?img=68',
             views: '450K',
             uploaded: '8 months ago'
         },
@@ -81,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             thumbnail: 'https://i.ytimg.com/vi/hQn0e1qCj90/hqdefault.jpg',
             title: 'Web Components Crash Course - Build Reusable UI',
-            channelName: 'Brad Traversy', // Another channel by Traversy Media
+            channelName: 'Brad Traversy',
             channelAvatar: 'https://i.pravatar.cc/30?img=11',
             views: '180K',
             uploaded: '2 months ago'
@@ -90,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             thumbnail: 'https://i.ytimg.com/vi/lQ0gQp9k3-g/hqdefault.jpg',
             title: 'How to build a SaaS application with Next.js',
             channelName: 'Sufiyan Mohd',
-            channelAvatar: 'https://i.pravatar.cc/30?img=68', // Sufiyan Mohd's avatar
+            channelAvatar: 'https://i.pravatar.cc/30?img=68',
             views: '75K',
             uploaded: '1 month ago'
         },
@@ -101,6 +103,58 @@ document.addEventListener('DOMContentLoaded', () => {
             channelAvatar: 'https://i.pravatar.cc/30?img=99',
             views: '1.5M',
             uploaded: '3 months ago'
+        }
+    ];
+
+    // Dummy Trending Videos Data - Now with more Songs and Movies!
+    const trendingVideos = [
+        {
+            thumbnail: 'https://i.ytimg.com/vi/9bZkp7q19f0/hqdefault.jpg', // Placeholder for music video
+            title: 'Top 10 Trending Bollywood Songs - July 2025 Chartbusters',
+            channelName: 'Music Hits India',
+            channelAvatar: 'https://i.pravatar.cc/30?img=18',
+            views: '15.2M',
+            uploaded: '2 days ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/d_ePzV5s40M/hqdefault.jpg', // Placeholder for movie trailer
+            title: 'Epic Sci-Fi Thriller 2025 - Official Trailer (Coming Soon)',
+            channelName: 'Movie Mania Trailers',
+            channelAvatar: 'https://i.pravatar.cc/30?img=28',
+            views: '8.1M',
+            uploaded: '5 days ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/O_o7k5pXf_E/hqdefault.jpg', // Placeholder for song cover
+            title: 'Viral Pop Song - Acoustic Cover (You won\'t believe it!)',
+            channelName: 'Melody Makers',
+            channelAvatar: 'https://i.pravatar.cc/30?img=38',
+            views: '4.5M',
+            uploaded: '1 day ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/D0yY10E0dOM/hqdefault.jpg', // Placeholder for movie review
+            title: 'Top 5 Must-Watch Action Movies of the Year - Review',
+            channelName: 'Film Fanatics',
+            channelAvatar: 'https://i.pravatar.cc/30?img=48',
+            views: '1.5M',
+            uploaded: '3 days ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/A1B2C3D4E5F/hqdefault.jpg', // Placeholder for song lyrics video
+            title: 'Trending Hip-Hop Track - Official Lyric Video',
+            channelName: 'Global Beats',
+            channelAvatar: 'https://i.pravatar.cc/30?img=58',
+            views: '7.2M',
+            uploaded: '1 week ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/Xg9E5e_F9gU/hqdefault.jpg', // Placeholder for movie clip
+            title: 'Comedy Movie Highlight Reel - Best Scenes of 2025',
+            channelName: 'Laugh Out Loud Films',
+            channelAvatar: 'https://i.pravatar.cc/30?img=60',
+            views: '3.9M',
+            uploaded: '4 days ago'
         }
     ];
 
@@ -136,11 +190,27 @@ document.addEventListener('DOMContentLoaded', () => {
          {
             name: username, // Add Sufiyan Mohd to subscriptions
             avatar: 'https://i.pravatar.cc/30?img=68'
+        },
+        {
+            name: 'Music Hits India',
+            avatar: 'https://i.pravatar.cc/30?img=18'
+        },
+        {
+            name: 'Movie Mania Trailers',
+            avatar: 'https://i.pravatar.cc/30?img=28'
+        },
+        {
+            name: 'Melody Makers',
+            avatar: 'https://i.pravatar.cc/30?img=38'
+        },
+        {
+            name: 'Film Fanatics',
+            avatar: 'https://i.pravatar.cc/30?img=48'
         }
     ];
 
 
-    // Function to create a video card
+    // Function to create a video card (unchanged)
     function createVideoCard(video) {
         const videoCard = document.createElement('div');
         videoCard.classList.add('video-card');
@@ -159,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return videoCard;
     }
 
-    // Function to create a subscription item
+    // Function to create a subscription item (unchanged)
     function createSubscriptionItem(subscription) {
         const subscriptionItem = document.createElement('div');
         subscriptionItem.classList.add('sidebar-item');
@@ -171,39 +241,50 @@ document.addEventListener('DOMContentLoaded', () => {
         return subscriptionItem;
     }
 
-    // Render videos
+    // Render videos (main grid)
     videos.forEach(video => {
         videoGrid.appendChild(createVideoCard(video));
     });
+
+    // Render trending videos
+    trendingVideos.forEach(video => {
+        trendingGrid.appendChild(createVideoCard(video));
+    });
+
 
     // Render subscriptions
     subscriptions.forEach(sub => {
         subscriptionsList.appendChild(createSubscriptionItem(sub));
     });
 
-    // Basic Sidebar Toggle (Optional)
+    // Basic Sidebar Toggle (unchanged)
     const menuIcon = document.querySelector('.menu-icon');
     const sidebar = document.querySelector('.sidebar');
-    const mainContent = document.querySelector('.main-content');
-    const videoGridContainer = document.querySelector('.video-grid');
+    const videoGridElement = document.querySelector('.video-grid');
+    const trendingSectionElement = document.querySelector('.trending-section');
 
     menuIcon.addEventListener('click', () => {
         sidebar.classList.toggle('collapsed');
-        // Adjust main content margin based on sidebar state
         if (sidebar.classList.contains('collapsed')) {
             sidebar.style.width = '70px';
             sidebar.querySelectorAll('span:last-child, h3').forEach(el => el.style.display = 'none');
             sidebar.querySelectorAll('.sidebar-item').forEach(item => item.style.justifyContent = 'center');
-            videoGridContainer.style.marginLeft = '0px'; // Remove margin
+            videoGridElement.style.marginLeft = '0px';
+            if (trendingSectionElement) {
+                trendingSectionElement.style.marginLeft = '0px';
+            }
         } else {
             sidebar.style.width = '240px';
             sidebar.querySelectorAll('span:last-child, h3').forEach(el => el.style.display = 'block');
             sidebar.querySelectorAll('.sidebar-item').forEach(item => item.style.justifyContent = 'flex-start');
-            videoGridContainer.style.marginLeft = '20px'; // Re-add margin
+            videoGridElement.style.marginLeft = '20px';
+            if (trendingSectionElement) {
+                trendingSectionElement.style.marginLeft = '20px';
+            }
         }
     });
 
-    // Handle dummy search (not functional, just an alert)
+    // Handle dummy search (not functional, just an alert) (unchanged)
     const searchButton = document.querySelector('.search-button');
     const searchBar = document.querySelector('.search-bar');
 
@@ -214,12 +295,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Add a placeholder click event for video cards (optional)
-    videoGrid.addEventListener('click', (event) => {
+    // Add a placeholder click event for video cards (optional) (unchanged)
+    document.body.addEventListener('click', (event) => {
         const videoCard = event.target.closest('.video-card');
         if (videoCard) {
             const title = videoCard.querySelector('.video-title').textContent;
-            alert(`You clicked on: "${title}"\n(In a real clone, this would take you to the video page.)`);
+            // IMPORTANT: This is a front-end only clone.
+            // These videos are NOT actually clickable to play or view full content.
+            // This alert is just a placeholder to show interaction.
+            alert(`You clicked on: "${title}"\n(In a real YouTube, this would take you to the video page for playback.)`);
         }
     });
 });
