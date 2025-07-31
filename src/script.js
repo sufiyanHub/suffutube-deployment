@@ -9,20 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // All videos are now focused on Gaming, Songs, and Movie Trailers
     const videos = [
         {
-            thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg', // Gaming: New RPG Trailer
-            title: 'Epic RPG Trailer 2025 - "Chronicles of Eldoria"',
+            thumbnail: 'https://youtu.be/PlzN8x2fBZU?si=nEvWrbjaEhw5razY', // Gaming: New RPG Trailer
+            title: 'The Angrez 2 Comedy Scenes Back to Back ',
             channelName: 'Gaming Nexus',
             channelAvatar: 'https://i.pravatar.cc/30?img=1',
             views: '5.2M',
             uploaded: '3 weeks ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg', // Music: Pop Song
-            title: 'New Pop Sensation - "Rhythm of My Heart" Official Music Video',
+            thumbnail: 'https://youtu.be/btlnivFoZOs?si=rsgYvT-Jl3De1P3e', // Music: Pop Song
+            title: 'PATNI NANAND AUR WEDDING ANNIVERSARY!',
             channelName: 'Sufiyan Mohd',
             channelAvatar: 'https://i.pravatar.cc/30?img=68',
             views: '10.8M',
-            uploaded: '2 weeks ago'
+            uploaded: '2 years ago'
         },
         {
             thumbnail: 'https://i.ytimg.com/vi/Go8y0V6h_Hk/hqdefault.jpg', // Movie: Action Trailer
@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
             uploaded: '5 days ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/nu_pC_CUEiE/hqdefault.jpg', // Movie: Horror Trailer
-            title: 'Terrifying Horror Film - "Whispers in the Dark" Official Teaser',
+            thumbnail: 'https://youtu.be/6PYf8x74SFo?si=lG-hBC9RnM-g7Fto', // Movie: Horror Trailer
+            title: 'Pokémon: DP Sinnoh League Victors | EP32 The Semi-Final Frontier!',
             channelName: 'Sufiyan Mohd',
             channelAvatar: 'https://i.pravatar.cc/30?img=68',
             views: '3.4M',
@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
             uploaded: '1 week ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/W6NZfCO5sks/hqdefault.jpg', // Music: K-Pop Dance Practice
-            title: 'K-Pop Superstars - "Blazing Fire" Dance Practice',
+            thumbnail: 'https://youtu.be/iylvtGwPsEM?si=ccxr-ODA66166ngV', // Music: K-Pop Dance Practice
+            title: 'Nanal Nagar STREET FOOD | Tolichowki, Quba Masjid',
             channelName: 'K-Pop Zone',
             channelAvatar: 'https://i.pravatar.cc/30?img=8',
             views: '9.1M',
@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
             uploaded: '3 days ago'
         },
         {
-            thumbnail: 'https://i.ytimg.com/vi/A1B2C3D4E5F/hqdefault.jpg', // Movie: Family Comedy Trailer
-            title: 'Heartwarming Family Comedy - "The Mishap Family" Trailer',
+            thumbnail: 'https://youtu.be/Mw2o7bp5RO4?si=O5S69mf4eB--pIT7', // Movie: Family Comedy Trailer
+            title: 'Took 5 Trains and Ended Up in Rural Japan',
             channelName: 'Family Fun Films',
             channelAvatar: 'https://i.pravatar.cc/30?img=15',
             views: '4.1M',
