@@ -1,74 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Clone</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Clone</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 </head>
 <body>
-    <header class="header">
-        <div class="header-left">
-            <span class="material-icons menu-icon">menu</span>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png" alt="YouTube Logo" class="youtube-logo">
-        </div>
-        <div class="header-middle">
-            <input type="text" placeholder="Search" class="search-bar">
-            <button class="search-button"><span class="material-icons">search</span></button>
-        </div>
-        <div class="header-right">
-            <span class="material-icons">videocam</span>
-            <span class="material-icons">apps</span>
-            <span class="material-icons">notifications</span>
-            <img src="https://i.pravatar.cc/30?img=68" alt="User Avatar" class="user-avatar"> </div>
-    </header>
-
-    <div class="main-content">
-        <aside class="sidebar">
-            <div class="sidebar-item active">
-                <span class="material-icons">home</span>
-                <span>Home</span>
-            </div>
-            <div class="sidebar-item">
-                <span class="material-icons">explore</span>
-                <span>Explore</span>
-            </div>
-            <div class="sidebar-item">
-                <span class="material-icons">subscriptions</span>
-                <span>Subscriptions</span>
-            </div>
-            <hr>
-            <div class="sidebar-item">
-                <span class="material-icons">video_library</span>
-                <span>Library</span>
-            </div>
-            <div class="sidebar-item">
-                <span class="material-icons">history</span>
-                <span>History</span>
-            </div>
-            <div class="sidebar-item">
-                <span class="material-icons">ondemand_video</span>
-                <span>Your videos</span>
-            </div>
-            <div class="sidebar-item">
-                <span class="material-icons">watch_later</span>
-                <span>Watch later</span>
-            </div>
-            <div class="sidebar-item">
-                <span class="material-icons">thumb_up_alt</span>
-                <span>Liked videos</span>
-            </div>
-            <hr>
-            <h3>SUBSCRIPTIONS</h3>
-            <div id="subscriptions-list">
-                </div>
-        </aside>
-
-        <main class="video-grid" id="video-grid">
-            </main>
+  <header class="header">
+    <div class="header-left">
+      <span class="material-icons menu-icon">menu</span>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
+        alt="YouTube Logo"
+        class="youtube-logo"
+      />
     </div>
+    <div class="header-middle">
+      <input type="text" placeholder="Search" class="search-bar" />
+      <button class="search-button">
+        <span class="material-icons">search</span>
+      </button>
+    </div>
+    <div class="header-right">
+      <span class="material-icons">videocam</span>
+      <span class="material-icons">apps</span>
+      <span class="material-icons">notifications</span>
+      <img
+        src="https://i.pravatar.cc/30?img=68"
+        alt="User Avatar"
+        class="user-avatar"
+      />
+    </div>
+  </header>
 
-    <script src="script.js"></script>
+  <div class="main-content">
+    <aside class="sidebar">
+      <div class="sidebar-item active">
+        <span class="material-icons">home</span>
+        <span>Home</span>
+      </div>
+      <div class="sidebar-item">
+        <span class="material-icons">explore</span>
+        <span>Explore</span>
+      </div>
+      <div class="sidebar-item">
+        <span class="material-icons">subscriptions</span>
+        <span>Subscriptions</span>
+      </div>
+      <hr />
+      <div class="sidebar-item">
+        <span class="material-icons">video_library</span>
+        <span>Library</span>
+      </div>
+      <div class="sidebar-item">
+        <span class="material-icons">history</span>
+        <span>History</span>
+      </div>
+      <div class="sidebar-item">
+        <span class="material-icons">ondemand_video</span>
+        <span>Your videos</span>
+      </div>
+      <div class="sidebar-item">
+        <span class="material-icons">watch_later</span>
+        <span>Watch later</span>
+      </div>
+      <div class="sidebar-item">
+        <span class="material-icons">thumb_up_alt</span>
+        <span>Liked videos</span>
+      </div>
+      <hr />
+      <h3>SUBSCRIPTIONS</h3>
+      <div id="subscriptions-list"></div>
+    </aside>
+
+    <main class="video-grid" id="video-grid">
+      <div class="video-card">
+        <a href="https://youtu.be/rmoPJsxpQZg" target="_blank">
+          <img src="https://img.youtube.com/vi/rmoPJsxpQZg/hqdefault.jpg" alt="Video thumbnail"/>
+        </a>
+        <h4>Placeholder Title 1</h4>
+        <p>Channel Name</p>
+      </div>
+      <div class="video-card">
+        <a href="https://youtu.be/p6ca7gq5H70" target="_blank">
+          <img src="https://img.youtube.com/vi/p6ca7gq5H70/hqdefault.jpg" alt="Video thumbnail"/>
+        </a>
+        <h4>Placeholder Title 2</h4>
+        <p>Channel Name</p>
+      </div>
+      <div class="video-card">
+        <a href="https://youtu.be/cWpKeb949Wk" target="_blank">
+          <img src="https://img.youtube.com/vi/cWpKeb949Wk/hqdefault.jpg" alt="Video thumbnail"/>
+        </a>
+        <h4>Placeholder Title 3</h4>
+        <p>Channel Name</p>
+      </div>
+      <div class="video-card">
+        <a href="https://youtu.be/v1NcZoa6gjE" target="_blank">
+          <img src="https://img.youtube.com/vi/v1NcZoa6gjE/hqdefault.jpg" alt="Video thumbnail"/>
+        </a>
+        <h4>Placeholder Title 4</h4>
+        <p>Channel Name</p>
+      </div>
+      <div class="video-card">
+        <a href="https://youtu.be/sj98TcfezzE" target="_blank">
+          <img src="https://img.youtube.com/vi/sj98TcfezzE/hqdefault.jpg" alt="Video thumbnail"/>
+        </a>
+        <h4>Placeholder Title 5</h4>
+        <p>Channel Name</p>
+      </div>
+      <div class="video-card">
+        <a href="https://youtu.be/20U4saRdRUI" target="_blank">
+          <img src="https://img.youtube.com/vi/20U4saRdRUI/hqdefault.jpg" alt="Video thumbnail"/>
+        </a>
+        <h4>Placeholder Title 6</h4>
+        <p>Channel Name</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
