@@ -4,11 +4,10 @@ on:
   push:
     branches:
       - main
-
   workflow_dispatch:
 
 env:
-  DOCKER_IMAGE_NAME: your-docker-hub-username/your-app-name
+  DOCKER_IMAGE_NAME: sufiyanhub/youtube-clone
   DOCKER_IMAGE_TAG: ${{ github.sha }}
 
 jobs:
@@ -34,13 +33,14 @@ jobs:
         tags: |
           ${{ env.DOCKER_IMAGE_NAME }}:latest
           ${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }}
-    
-    - name: Set up Kubeconfig
-      uses: zyoung78/kubeconfig-action@v1.0.1
-      with:
-        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+    - name: Set up KUBECONFIG
+      run: |
+        mkdir -p $HOME/.kube
+        echo "${{ secrets.KUBE_CONFIG }}" > $HOME/.kube/config
+        chmod 600 $HOME/.kube/config
 
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f k8s-deployment.yml
-        kubectl set image deployment/your-app-deployment your-app-container=${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }}
+        kubectl set image deployment/youtube-clone-deployment youtube-clone=${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }}
