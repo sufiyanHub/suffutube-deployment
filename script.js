@@ -278,20 +278,29 @@ function renderVideos() {
   if (videoGrid) {
     videoGrid.innerHTML = ''; // Clear existing content
     videos.forEach(video => {
-      const videoCard = document.createElement('div');
-      videoCard.className = 'video-card';
-      videoCard.innerHTML = `
-        <img src="${video.thumbnail}" alt="Video Thumbnail" class="video-thumbnail" />
-        <div class="video-details">
-          <img src="${video.channelAvatar}" alt="Channel Avatar" class="channel-avatar-small" />
-          <div class="video-info">
-            <h4 class="video-title">${video.title}</h4>
-            <p class="channel-name">${video.channelName}</p>
-            <p class="video-meta">${video.views} views • ${video.uploaded}</p>
+      // Create an anchor (<a>) element to make the video card clickable
+      const videoLink = document.createElement('a');
+      videoLink.href = `https://www.youtube.com/watch?v=${video.videoId}`;
+      videoLink.target = '_blank'; // Opens the link in a new tab
+      videoLink.style.textDecoration = 'none'; // Removes the default underline
+      videoLink.style.color = 'inherit'; // Ensures text color is inherited
+
+      // Populate the link with the video card's HTML content
+      videoLink.innerHTML = `
+        <div class="video-card">
+          <img src="${video.thumbnail}" alt="Video Thumbnail" class="video-thumbnail" />
+          <div class="video-details">
+            <img src="${video.channelAvatar}" alt="Channel Avatar" class="channel-avatar-small" />
+            <div class="video-info">
+              <h4 class="video-title">${video.title}</h4>
+              <p class="channel-name">${video.channelName}</p>
+              <p class="video-meta">${video.views} views • ${video.uploaded}</p>
+            </div>
           </div>
         </div>
       `;
-      videoGrid.appendChild(videoCard);
+      
+      videoGrid.appendChild(videoLink);
     });
   }
 }
