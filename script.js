@@ -14,88 +14,88 @@ const users = [
   }
 ];
 
-// Working video data with popular YouTube videos
+// Your actual video data with the video IDs from your provided links
 const videos = [
     {
-        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
-        title: 'Rick Astley - Never Gonna Give You Up (Official Video)',
-        channelName: 'Rick Astley',
+        thumbnail: 'https://img.youtube.com/vi/p6ca7gq5H70/maxresdefault.jpg',
+        title: 'Video from your link 1',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=1',
-        views: '1.4B',
-        uploaded: '14 years ago',
-        videoId: 'dQw4w9WgXcQ'
+        views: 'Loading...',
+        uploaded: 'Recently',
+        videoId: 'p6ca7gq5H70'
     },
     {
-        thumbnail: 'https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg',
-        title: 'PSY - GANGNAM STYLE(강남스타일) M/V',
-        channelName: 'officialpsy',
+        thumbnail: 'https://img.youtube.com/vi/lh5f69t7L9A/maxresdefault.jpg',
+        title: 'Video from your link 2',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=2',
-        views: '4.8B',
-        uploaded: '11 years ago',
-        videoId: '9bZkp7q19f0'
+        views: 'Loading...',
+        uploaded: 'Recently',
+        videoId: 'lh5f69t7L9A'
     },
     {
-        thumbnail: 'https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg',
-        title: 'Luis Fonsi - Despacito ft. Daddy Yankee',
-        channelName: 'LuisFonsiVEVO',
+        thumbnail: 'https://img.youtube.com/vi/QxddU3sjVRY/maxresdefault.jpg',
+        title: 'Video from your link 3',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=3',
-        views: '8.2B',
-        uploaded: '6 years ago',
-        videoId: 'kJQP7kiw5Fk'
+        views: 'Loading...',
+        uploaded: 'Recently',
+        videoId: 'QxddU3sjVRY'
     },
     {
-        thumbnail: 'https://img.youtube.com/vi/fJ9rUzIMcZQ/maxresdefault.jpg',
-        title: 'Queen – Bohemian Rhapsody (Official Video Remastered)',
-        channelName: 'Queen Official',
+        thumbnail: 'https://img.youtube.com/vi/VCy6o6WPgu8/maxresdefault.jpg',
+        title: 'Video from your link 4',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=4',
-        views: '1.9B',
-        uploaded: '13 years ago',
-        videoId: 'fJ9rUzIMcZQ'
+        views: 'Loading...',
+        uploaded: 'Recently',
+        videoId: 'VCy6o6WPgu8'
     },
     {
-        thumbnail: 'https://img.youtube.com/vi/YQHsXMglC9A/maxresdefault.jpg',
-        title: 'Adele - Hello (Official Music Video)',
-        channelName: 'Adele',
+        thumbnail: 'https://img.youtube.com/vi/_T3vfkl-3Vk/maxresdefault.jpg',
+        title: 'Video from your link 5',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=5',
-        views: '3.2B',
-        uploaded: '8 years ago',
-        videoId: 'YQHsXMglC9A'
+        views: 'Loading...',
+        uploaded: 'Recently',
+        videoId: '_T3vfkl-3Vk'
     },
     {
-        thumbnail: 'https://img.youtube.com/vi/JGwWNGJdvx8/maxresdefault.jpg',
-        title: 'Ed Sheeran - Shape of You (Official Music Video)',
-        channelName: 'Ed Sheeran',
+        thumbnail: 'https://img.youtube.com/vi/bcglgTOpSxU/maxresdefault.jpg',
+        title: 'Video from your link 6',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=6',
-        views: '5.9B',
-        uploaded: '7 years ago',
-        videoId: 'JGwWNGJdvx8'
+        views: 'Loading...',
+        uploaded: 'Recently',
+        videoId: 'bcglgTOpSxU'
     },
     {
-        thumbnail: 'https://img.youtube.com/vi/RgKAFK5djSk/maxresdefault.jpg',
-        title: 'Wiz Khalifa - See You Again ft. Charlie Puth [Official Video]',
-        channelName: 'Wiz Khalifa',
+        thumbnail: 'https://img.youtube.com/vi/dEU2ibHQnjM/maxresdefault.jpg',
+        title: 'Video from your link 7',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=7',
-        views: '5.8B',
-        uploaded: '8 years ago',
-        videoId: 'RgKAFK5djSk'
+        views: 'Loading...',
+        uploaded: 'Recently',
+        videoId: 'dEU2ibHQnjM'
     },
     {
-        thumbnail: 'https://img.youtube.com/vi/OPf0YbXqDm0/maxresdefault.jpg',
-        title: 'Mark Ronson - Uptown Funk (Official Video) ft. Bruno Mars',
-        channelName: 'Mark Ronson',
+        thumbnail: 'https://img.youtube.com/vi/pxMUZavn3uY/maxresdefault.jpg',
+        title: 'Video from your link 8',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=8',
-        views: '4.7B',
-        uploaded: '9 years ago',
-        videoId: 'OPf0YbXqDm0'
+        views: 'Loading...',
+        uploaded: 'Recently',
+        videoId: 'pxMUZavn3uY'
     },
     {
-        thumbnail: 'https://img.youtube.com/vi/pt8VYOfr8To/maxresdefault.jpg',
-        title: 'Justin Bieber - Sorry (Official Music Video)',
-        channelName: 'Justin Bieber',
+        thumbnail: 'https://img.youtube.com/vi/v06Gsp8hDdc/maxresdefault.jpg',
+        title: 'Video from your link 9',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=9',
-        views: '3.5B',
-        uploaded: '8 years ago',
-        videoId: 'pt8VYOfr8To'
+        views: 'Loading...',
+        uploaded: 'Recently',
+        videoId: 'v06Gsp8hDdc'
     }
 ];
 
