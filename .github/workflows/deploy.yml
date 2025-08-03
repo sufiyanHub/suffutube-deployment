@@ -1,28 +1,46 @@
-name: Deploy to GitHub Pages # Name of your workflow
+name: Docker Image CI & Deploy to K8s
 
 on:
   push:
     branches:
-      - main # This workflow runs when changes are pushed to the 'main' branch
+      - main
 
-  # Allows you to run this workflow manually from the Actions tab in GitHub
   workflow_dispatch:
+
+env:
+  DOCKER_IMAGE_NAME: your-docker-hub-username/your-app-name
+  DOCKER_IMAGE_TAG: ${{ github.sha }}
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # Specifies the type of runner (virtual machine) to use
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository # Step 1: Get your code onto the runner
-      uses: actions/checkout@v4 # Uses the official GitHub action for checking out code
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    - name: Deploy to GitHub Pages # Step 2: Deploy your site
-      uses: peaceiris/actions-gh-pages@v4 # Uses the peaceiris GitHub Pages deployment action
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }} # Uses the automatically provided GitHub token for authentication
-        # IMPORTANT: This tells the action that your website files are inside the 'src' folder
-        # The contents of 'src' will be copied to the root of the 'gh-pages' branch
-        publish_dir: ./src
-        # Optional: Explicitly define the branch to publish to (default is gh-pages)
-        # It's good practice to be explicit.
-        publish_branch: gh-pages
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      id: docker_build
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: |
+          ${{ env.DOCKER_IMAGE_NAME }}:latest
+          ${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }}
+    
+    - name: Set up Kubeconfig
+      uses: zyoung78/kubeconfig-action@v1.0.1
+      with:
+        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f k8s-deployment.yml
+        kubectl set image deployment/your-app-deployment your-app-container=${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }}
