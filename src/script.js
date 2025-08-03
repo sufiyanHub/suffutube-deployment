@@ -14,79 +14,88 @@ const users = [
   }
 ];
 
-// CORRECTED video data with working thumbnails and video IDs
+// Updated video data with your provided YouTube videos and working thumbnails
 const videos = [
     {
-        thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg',
-        title: 'The Angrez 2 Comedy Scenes Back to Back',
-        channelName: 'Gaming Nexus',
-        channelAvatar: 'https://i.pravatar.cc/30?img=1',
-        views: '5.2M',
-        uploaded: '3 weeks ago',
-        videoId: 'aQZJ1fK72tA'
+        thumbnail: 'https://img.youtube.com/vi/p6ca7gq5H70/maxresdefault.jpg',
+        title: 'React Tutorial Video',
+        channelName: 'Tech Channel',
+        channelAvatar: 'https://i.pravatar.cc/40?img=1',
+        views: '1.2M',
+        uploaded: '2 days ago',
+        videoId: 'p6ca7gq5H70'
     },
     {
-        thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg',
-        title: 'PATNI NANAND AUR WEDDING ANNIVERSARY!',
-        channelName: 'Sufiyan Mohd',
-        channelAvatar: 'https://i.pravatar.cc/30?img=68',
-        views: '10.8M',
-        uploaded: '2 years ago',
-        videoId: 'W_aV_uJ8t_U'
+        thumbnail: 'https://img.youtube.com/vi/lh5f69t7L9A/maxresdefault.jpg',
+        title: 'JavaScript Development Guide',
+        channelName: 'Code Academy',
+        channelAvatar: 'https://i.pravatar.cc/40?img=2',
+        views: '856K',
+        uploaded: '1 week ago',
+        videoId: 'lh5f69t7L9A'
     },
     {
-        thumbnail: 'https://i.ytimg.com/vi/Go8y0V6h_Hk/hqdefault.jpg',
-        title: 'Action Blockbuster 2025 - "Urban Warfare" Final Trailer',
-        channelName: 'Cinema Central',
-        channelAvatar: 'https://i.pravatar.cc/30?img=3',
-        views: '7.1M',
-        uploaded: '1 month ago',
-        videoId: 'Go8y0V6h_Hk'
+        thumbnail: 'https://img.youtube.com/vi/QxddU3sjVRY/maxresdefault.jpg',
+        title: 'Web Development Tutorial',
+        channelName: 'Programming Hub',
+        channelAvatar: 'https://i.pravatar.cc/40?img=3',
+        views: '2.1M',
+        uploaded: '3 days ago',
+        videoId: 'QxddU3sjVRY'
     },
     {
-        thumbnail: 'https://i.ytimg.com/vi/V_fGg4IeP2E/hqdefault.jpg',
-        title: 'Hilarious Gaming Moments - Stream Highlights #42',
-        channelName: 'Pro Gamer Livestream',
-        channelAvatar: 'https://i.pravatar.cc/30?img=4',
-        views: '2.9M',
+        thumbnail: 'https://img.youtube.com/vi/VCy6o6WPgu8/maxresdefault.jpg',
+        title: 'Frontend Masterclass',
+        channelName: 'Dev Community',
+        channelAvatar: 'https://i.pravatar.cc/40?img=4',
+        views: '743K',
+        uploaded: '5 days ago',
+        videoId: 'VCy6o6WPgu8'
+    },
+    {
+        thumbnail: 'https://img.youtube.com/vi/_T3vfkl-3Vk/maxresdefault.jpg',
+        title: 'Advanced CSS Techniques',
+        channelName: 'Design Masters',
+        channelAvatar: 'https://i.pravatar.cc/40?img=5',
+        views: '428K',
+        uploaded: '1 week ago',
+        videoId: '_T3vfkl-3Vk'
+    },
+    {
+        thumbnail: 'https://img.youtube.com/vi/bcglgTOpSxU/maxresdefault.jpg',
+        title: 'Node.js Complete Course',
+        channelName: 'Backend Pro',
+        channelAvatar: 'https://i.pravatar.cc/40?img=6',
+        views: '1.8M',
+        uploaded: '2 weeks ago',
+        videoId: 'bcglgTOpSxU'
+    },
+    {
+        thumbnail: 'https://img.youtube.com/vi/dEU2ibHQnjM/maxresdefault.jpg',
+        title: 'Database Design Fundamentals',
+        channelName: 'Data Science Hub',
+        channelAvatar: 'https://i.pravatar.cc/40?img=7',
+        views: '632K',
         uploaded: '4 days ago',
-        videoId: 'V_fGg4IeP2E'
+        videoId: 'dEU2ibHQnjM'
     },
     {
-        thumbnail: 'https://i.ytimg.com/vi/LpG4a5o4YmU/hqdefault.jpg',
-        title: "MADINA'S MOST DELICIOUS Street Food Secrets Revealed!",
-        channelName: 'ABDUL MALIK FAREED vlogs',
-        channelAvatar: 'https://i.pravatar.cc/30?img=1',
-        views: '376.8K',
-        uploaded: '3 weeks ago',
-        videoId: 'LpG4a5o4YmU'
+        thumbnail: 'https://img.youtube.com/vi/pxMUZavn3uY/maxresdefault.jpg',
+        title: 'Mobile App Development',
+        channelName: 'App Builder',
+        channelAvatar: 'https://i.pravatar.cc/40?img=8',
+        views: '915K',
+        uploaded: '6 days ago',
+        videoId: 'pxMUZavn3uY'
     },
     {
-        thumbnail: 'https://i.ytimg.com/vi/Tq-K8X5YV7U/hqdefault.jpg',
-        title: 'Building a Three-Tier Architecture with EC2, RDS, ALB, ACM, and Route 53',
-        channelName: 'Aviz Academy | AWS with Avinash Reddy',
-        channelAvatar: 'https://i.pravatar.cc/30?img=2',
-        views: '14.0K',
-        uploaded: '3 weeks ago',
-        videoId: 'Tq-K8X5YV7U'
-    },
-    {
-        thumbnail: 'https://i.ytimg.com/vi/K5z0l2Dq1kU/hqdefault.jpg',
-        title: '90 Percent DevOps Engineers do these 7 learning mistakes',
-        channelName: 'Abhishek.Veeramalla',
-        channelAvatar: 'https://i.pravatar.cc/30?img=3',
-        views: '795',
-        uploaded: '3 weeks ago',
-        videoId: 'K5z0l2Dq1kU'
-    },
-    {
-        thumbnail: 'https://i.ytimg.com/vi/9g9wW5p9h3M/hqdefault.jpg',
-        title: 'Aaram Haram Hai Success Ke Liye | SRK Motivation | King Khan Motivation',
-        channelName: 'Keep Marching',
-        channelAvatar: 'https://i.pravatar.cc/30?img=4',
-        views: '10.0M',
-        uploaded: '3 years ago',
-        videoId: '9g9wW5p9h3M'
+        thumbnail: 'https://img.youtube.com/vi/v06Gsp8hDdc/maxresdefault.jpg',
+        title: 'Cloud Computing Basics',
+        channelName: 'Cloud Expert',
+        channelAvatar: 'https://i.pravatar.cc/40?img=9',
+        views: '1.3M',
+        uploaded: '1 week ago',
+        videoId: 'v06Gsp8hDdc'
     }
 ];
 
