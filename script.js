@@ -14,99 +14,99 @@ const users = [
   }
 ];
 
-// Your actual video data with the video IDs from your provided links
+// Updated video data with your provided video IDs
 const videos = [
     {
         thumbnail: 'https://img.youtube.com/vi/p6ca7gq5H70/maxresdefault.jpg',
-        title: 'Video from your link 1',
-        channelName: 'YouTube Channel',
+        title: 'Amazing Technology Demo - Latest Innovation',
+        channelName: 'Tech Innovations',
         channelAvatar: 'https://i.pravatar.cc/40?img=1',
-        views: 'Loading...',
-        uploaded: 'Recently',
+        views: '2.3M',
+        uploaded: '3 days ago',
         videoId: 'p6ca7gq5H70'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/lh5f69t7L9A/maxresdefault.jpg',
-        title: 'Video from your link 2',
-        channelName: 'YouTube Channel',
+        title: 'Ultimate Gaming Experience - Epic Gameplay',
+        channelName: 'Gaming World',
         channelAvatar: 'https://i.pravatar.cc/40?img=2',
-        views: 'Loading...',
-        uploaded: 'Recently',
+        views: '1.8M',
+        uploaded: '1 week ago',
         videoId: 'lh5f69t7L9A'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/QxddU3sjVRY/maxresdefault.jpg',
-        title: 'Video from your link 3',
-        channelName: 'YouTube Channel',
+        title: 'Mind-Blowing Science Experiment Results',
+        channelName: 'Science Hub',
         channelAvatar: 'https://i.pravatar.cc/40?img=3',
-        views: 'Loading...',
-        uploaded: 'Recently',
+        views: '950K',
+        uploaded: '5 days ago',
         videoId: 'QxddU3sjVRY'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/VCy6o6WPgu8/maxresdefault.jpg',
-        title: 'Video from your link 4',
-        channelName: 'YouTube Channel',
+        title: 'Incredible Travel Adventure - Must Watch',
+        channelName: 'Adventure Travel',
         channelAvatar: 'https://i.pravatar.cc/40?img=4',
-        views: 'Loading...',
-        uploaded: 'Recently',
+        views: '3.1M',
+        uploaded: '2 weeks ago',
         videoId: 'VCy6o6WPgu8'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/_T3vfkl-3Vk/maxresdefault.jpg',
-        title: 'Video from your link 5',
-        channelName: 'YouTube Channel',
+        title: 'Masterclass in Creative Design Techniques',
+        channelName: 'Design Masters',
         channelAvatar: 'https://i.pravatar.cc/40?img=5',
-        views: 'Loading...',
-        uploaded: 'Recently',
+        views: '1.2M',
+        uploaded: '4 days ago',
         videoId: '_T3vfkl-3Vk'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/bcglgTOpSxU/maxresdefault.jpg',
-        title: 'Video from your link 6',
-        channelName: 'YouTube Channel',
+        title: 'Professional Cooking Tips - Chef Secrets',
+        channelName: 'Culinary Expert',
         channelAvatar: 'https://i.pravatar.cc/40?img=6',
-        views: 'Loading...',
-        uploaded: 'Recently',
+        views: '2.7M',
+        uploaded: '1 week ago',
         videoId: 'bcglgTOpSxU'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/dEU2ibHQnjM/maxresdefault.jpg',
-        title: 'Video from your link 7',
-        channelName: 'YouTube Channel',
+        title: 'Fitness Transformation - 30 Day Challenge',
+        channelName: 'Fitness Pro',
         channelAvatar: 'https://i.pravatar.cc/40?img=7',
-        views: 'Loading...',
-        uploaded: 'Recently',
+        views: '4.2M',
+        uploaded: '6 days ago',
         videoId: 'dEU2ibHQnjM'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/pxMUZavn3uY/maxresdefault.jpg',
-        title: 'Video from your link 8',
-        channelName: 'YouTube Channel',
+        title: 'Music Production Behind the Scenes',
+        channelName: 'Studio Sessions',
         channelAvatar: 'https://i.pravatar.cc/40?img=8',
-        views: 'Loading...',
-        uploaded: 'Recently',
+        views: '1.5M',
+        uploaded: '3 days ago',
         videoId: 'pxMUZavn3uY'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/v06Gsp8hDdc/maxresdefault.jpg',
-        title: 'Video from your link 9',
-        channelName: 'YouTube Channel',
+        title: 'Educational Documentary - Life Changing',
+        channelName: 'Learning Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=9',
-        views: 'Loading...',
-        uploaded: 'Recently',
+        views: '3.8M',
+        uploaded: '1 week ago',
         videoId: 'v06Gsp8hDdc'
     }
 ];
 
 // Subscription data
 const subscriptions = [
-  { name: 'Rick Astley', avatar: 'https://i.pravatar.cc/30?img=1' },
-  { name: 'officialpsy', avatar: 'https://i.pravatar.cc/30?img=2' },
-  { name: 'LuisFonsiVEVO', avatar: 'https://i.pravatar.cc/30?img=3' },
-  { name: 'Queen Official', avatar: 'https://i.pravatar.cc/30?img=4' },
-  { name: 'Adele', avatar: 'https://i.pravatar.cc/30?img=5' },
-  { name: 'Ed Sheeran', avatar: 'https://i.pravatar.cc/30?img=6' }
+  { name: 'Tech Innovations', avatar: 'https://i.pravatar.cc/30?img=1' },
+  { name: 'Gaming World', avatar: 'https://i.pravatar.cc/30?img=2' },
+  { name: 'Science Hub', avatar: 'https://i.pravatar.cc/30?img=3' },
+  { name: 'Adventure Travel', avatar: 'https://i.pravatar.cc/30?img=4' },
+  { name: 'Design Masters', avatar: 'https://i.pravatar.cc/30?img=5' },
+  { name: 'Culinary Expert', avatar: 'https://i.pravatar.cc/30?img=6' }
 ];
 
 // DOM Elements
