@@ -16,86 +16,78 @@ const users = [
 
 // Dummy video data
 const videos = [
-  {
-    thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg',
-    title: 'The Angrez 2 Comedy Scenes Back to Back',
-    channelName: 'Gaming Nexus',
-    channelAvatar: 'https://i.pravatar.cc/30?img=1',
-    views: '5.2M',
-    uploaded: '3 weeks ago'
-  },
-  {
-    thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg',
-    title: 'PATNI NANAND AUR WEDDING ANNIVERSARY!',
-    channelName: 'Sufiyan Mohd',
-    channelAvatar: 'https://i.pravatar.cc/30?img=68',
-    views: '10.8M',
-    uploaded: '2 years ago'
-  },
-  {
-    thumbnail: 'https://i.ytimg.com/vi/Go8y0V6h_Hk/hqdefault.jpg',
-    title: 'Action Blockbuster 2025 - "Urban Warfare" Final Trailer',
-    channelName: 'Cinema Central',
-    channelAvatar: 'https://i.pravatar.cc/30?img=3',
-    views: '7.1M',
-    uploaded: '1 month ago'
-  },
-  {
-    thumbnail: 'https://i.ytimg.com/vi/V_fGg4IeP2E/hqdefault.jpg',
-    title: 'Hilarious Gaming Moments - Stream Highlights #42',
-    channelName: 'Pro Gamer Livestream',
-    channelAvatar: 'https://i.pravatar.cc/30?img=4',
-    views: '2.9M',
-    uploaded: '4 days ago'
-  },
-  {
-    thumbnail: 'https://i.ytimg.com/vi/PkZNo7MFoBs/hqdefault.jpg',
-    title: 'Soulful Acoustic Cover - "Fading Lights"',
-    channelName: 'Acoustic Vibes',
-    channelAvatar: 'https://i.pravatar.cc/30?img=5',
-    views: '1.5M',
-    uploaded: '5 days ago'
-  },
-  {
-    thumbnail: 'https://i.ytimg.com/vi/nu_pC_CUEiE/hqdefault.jpg',
-    title: 'Pokémon: DP Sinnoh League Victors | EP32 The Semi-Final Frontier!',
-    channelName: 'Sufiyan Mohd',
-    channelAvatar: 'https://i.pravatar.cc/30?img=68',
-    views: '3.4M',
-    uploaded: '3 weeks ago'
-  },
-  {
-    thumbnail: 'https://i.ytimg.com/vi/lQ0gQp9k3-g/hqdefault.jpg',
-    title: 'Indie Game Gem: "Pixel Adventures" Full Review',
-    channelName: 'Indie Gamers Unite',
-    channelAvatar: 'https://i.pravatar.cc/30?img=7',
-    views: '800K',
-    uploaded: '1 week ago'
-  },
-  {
-    thumbnail: 'https://i.ytimg.com/vi/W6NZfCO5sks/hqdefault.jpg',
-    title: 'Nanal Nagar STREET FOOD | Tolichowki, Quba Masjid',
-    channelName: 'K-Pop Zone',
-    channelAvatar: 'https://i.pravatar.cc/30?img=8',
-    views: '9.1M',
-    uploaded: '6 days ago'
-  },
-  {
-    thumbnail: 'https://i.ytimg.com/vi/qdsz66kU3iY/hqdefault.jpg',
-    title: 'Powerful Documentary - "The Ocean\'s Cry" Trailer',
-    channelName: 'Sufiyan Mohd',
-    channelAvatar: 'https://i.pravatar.cc/30?img=68',
-    views: '1.1M',
-    uploaded: '2 months ago'
-  },
-  {
-    thumbnail: 'https://i.ytimg.com/vi/rfscVS0vtbw/hqdefault.jpg',
-    title: 'Top Esports Plays of the Month - Pro League Highlights',
-    channelName: 'Esports Arena',
-    channelAvatar: 'https://i.pravatar.cc/30?img=10',
-    views: '4.8M',
-    uploaded: '1 month ago'
-  }
+    {
+        thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg',
+        title: 'The Angrez 2 Comedy Scenes Back to Back',
+        channelName: 'Gaming Nexus',
+        channelAvatar: 'https://i.pravatar.cc/30?img=1',
+        views: '5.2M',
+        uploaded: '3 weeks ago',
+        videoId: 'aQZJ1fK72tA'
+    },
+    {
+        thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg',
+        title: 'PATNI NANAND AUR WEDDING ANNIVERSARY!',
+        channelName: 'Sufiyan Mohd',
+        channelAvatar: 'https://i.pravatar.cc/30?img=68',
+        views: '10.8M',
+        uploaded: '2 years ago',
+        videoId: 'W_aV_uJ8t_U'
+    },
+    {
+        thumbnail: 'https://i.ytimg.com/vi/Go8y0V6h_Hk/hqdefault.jpg',
+        title: 'Action Blockbuster 2025 - "Urban Warfare" Final Trailer',
+        channelName: 'Cinema Central',
+        channelAvatar: 'https://i.pravatar.cc/30?img=3',
+        views: '7.1M',
+        uploaded: '1 month ago',
+        videoId: 'Go8y0V6h_Hk'
+    },
+    {
+        thumbnail: 'https://i.ytimg.com/vi/V_fGg4IeP2E/hqdefault.jpg',
+        title: 'Hilarious Gaming Moments - Stream Highlights #42',
+        channelName: 'Pro Gamer Livestream',
+        channelAvatar: 'https://i.pravatar.cc/30?img=4',
+        views: '2.9M',
+        uploaded: '4 days ago',
+        videoId: 'V_fGg4IeP2E'
+    },
+    {
+        thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg', // Placeholder thumbnail
+        title: "MADINA'S MOST DELICIOUS Street Food Secrets Revealed!",
+        channelName: 'ABDUL MALIK FAREED vlogs',
+        channelAvatar: 'https://i.pravatar.cc/30?img=1',
+        views: '376.8K',
+        uploaded: '3 weeks ago',
+        videoId: '42'
+    },
+    {
+        thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg', // Placeholder thumbnail
+        title: 'Building a Three-Tier Architecture with EC2, RDS, ALB, ACM, and Route 53',
+        channelName: 'Aviz Academy | AWS with Avinash Reddy',
+        channelAvatar: 'https://i.pravatar.cc/30?img=2',
+        views: '14.0K',
+        uploaded: '3 weeks ago',
+        videoId: '43'
+    },
+    {
+        thumbnail: 'https://i.ytimg.com/vi/Go8y0V6h_Hk/hqdefault.jpg', // Placeholder thumbnail
+        title: '90 Percent DevOps Engineers do these 7 learning mistakes',
+        channelName: 'Abhishek.Veeramalla',
+        channelAvatar: 'https://i.pravatar.cc/30?img=3',
+        views: '795',
+        uploaded: '3 weeks ago',
+        videoId: '44'
+    },
+    {
+        thumbnail: 'https://i.ytimg.com/vi/V_fGg4IeP2E/hqdefault.jpg', // Placeholder thumbnail
+        title: 'Aaram Haram Hai Success Ke Liye | SRK Motivation | King Khan Motivation',
+        channelName: 'Keep Marching',
+        channelAvatar: 'https://i.pravatar.cc/30?img=4',
+        views: '10.0M',
+        uploaded: '3 years ago',
+        videoId: '45'
+    }
 ];
 
 // Dummy subscription data
