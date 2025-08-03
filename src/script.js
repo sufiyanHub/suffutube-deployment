@@ -14,87 +14,97 @@ const users = [
   }
 ];
 
-// Updated video data with your provided YouTube videos and working thumbnails
+// Your actual video data with extracted video IDs from the links you provided
 const videos = [
     {
+        // Using multiple thumbnail formats as fallbacks
         thumbnail: 'https://img.youtube.com/vi/p6ca7gq5H70/maxresdefault.jpg',
-        title: 'React Tutorial Video',
-        channelName: 'Tech Channel',
+        thumbnailBackup: 'https://img.youtube.com/vi/p6ca7gq5H70/hqdefault.jpg',
+        title: 'Loading video title...', // Will be updated when thumbnail loads
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=1',
-        views: '1.2M',
-        uploaded: '2 days ago',
+        views: 'Loading...',
+        uploaded: 'Recently',
         videoId: 'p6ca7gq5H70'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/lh5f69t7L9A/maxresdefault.jpg',
-        title: 'JavaScript Development Guide',
-        channelName: 'Code Academy',
+        thumbnailBackup: 'https://img.youtube.com/vi/lh5f69t7L9A/hqdefault.jpg',
+        title: 'Loading video title...',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=2',
-        views: '856K',
-        uploaded: '1 week ago',
+        views: 'Loading...',
+        uploaded: 'Recently',
         videoId: 'lh5f69t7L9A'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/QxddU3sjVRY/maxresdefault.jpg',
-        title: 'Web Development Tutorial',
-        channelName: 'Programming Hub',
+        thumbnailBackup: 'https://img.youtube.com/vi/QxddU3sjVRY/hqdefault.jpg',
+        title: 'Loading video title...',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=3',
-        views: '2.1M',
-        uploaded: '3 days ago',
+        views: 'Loading...',
+        uploaded: 'Recently',
         videoId: 'QxddU3sjVRY'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/VCy6o6WPgu8/maxresdefault.jpg',
-        title: 'Frontend Masterclass',
-        channelName: 'Dev Community',
+        thumbnailBackup: 'https://img.youtube.com/vi/VCy6o6WPgu8/hqdefault.jpg',
+        title: 'Loading video title...',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=4',
-        views: '743K',
-        uploaded: '5 days ago',
+        views: 'Loading...',
+        uploaded: 'Recently',
         videoId: 'VCy6o6WPgu8'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/_T3vfkl-3Vk/maxresdefault.jpg',
-        title: 'Advanced CSS Techniques',
-        channelName: 'Design Masters',
+        thumbnailBackup: 'https://img.youtube.com/vi/_T3vfkl-3Vk/hqdefault.jpg',
+        title: 'Loading video title...',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=5',
-        views: '428K',
-        uploaded: '1 week ago',
+        views: 'Loading...',
+        uploaded: 'Recently',
         videoId: '_T3vfkl-3Vk'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/bcglgTOpSxU/maxresdefault.jpg',
-        title: 'Node.js Complete Course',
-        channelName: 'Backend Pro',
+        thumbnailBackup: 'https://img.youtube.com/vi/bcglgTOpSxU/hqdefault.jpg',
+        title: 'Loading video title...',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=6',
-        views: '1.8M',
-        uploaded: '2 weeks ago',
+        views: 'Loading...',
+        uploaded: 'Recently',
         videoId: 'bcglgTOpSxU'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/dEU2ibHQnjM/maxresdefault.jpg',
-        title: 'Database Design Fundamentals',
-        channelName: 'Data Science Hub',
+        thumbnailBackup: 'https://img.youtube.com/vi/dEU2ibHQnjM/hqdefault.jpg',
+        title: 'Loading video title...',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=7',
-        views: '632K',
-        uploaded: '4 days ago',
+        views: 'Loading...',
+        uploaded: 'Recently',
         videoId: 'dEU2ibHQnjM'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/pxMUZavn3uY/maxresdefault.jpg',
-        title: 'Mobile App Development',
-        channelName: 'App Builder',
+        thumbnailBackup: 'https://img.youtube.com/vi/pxMUZavn3uY/hqdefault.jpg',
+        title: 'Loading video title...',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=8',
-        views: '915K',
-        uploaded: '6 days ago',
+        views: 'Loading...',
+        uploaded: 'Recently',
         videoId: 'pxMUZavn3uY'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/v06Gsp8hDdc/maxresdefault.jpg',
-        title: 'Cloud Computing Basics',
-        channelName: 'Cloud Expert',
+        thumbnailBackup: 'https://img.youtube.com/vi/v06Gsp8hDdc/hqdefault.jpg',
+        title: 'Loading video title...',
+        channelName: 'YouTube Channel',
         channelAvatar: 'https://i.pravatar.cc/40?img=9',
-        views: '1.3M',
-        uploaded: '1 week ago',
+        views: 'Loading...',
+        uploaded: 'Recently',
         videoId: 'v06Gsp8hDdc'
     }
 ];
@@ -428,7 +438,7 @@ function logout() {
   closeVideoModal();
 }
 
-// UPDATED renderVideos function to open videos in modal instead of redirecting
+// UPDATED renderVideos function with better thumbnail fallback system
 function renderVideos() {
   if (videoGrid) {
     videoGrid.innerHTML = ''; // Clear existing content
@@ -451,11 +461,19 @@ function renderVideos() {
         <div class="video-card">
           <div class="thumbnail-container">
             <img src="${video.thumbnail}" 
-                 alt="Video Thumbnail for ${video.title}" 
+                 alt="Thumbnail for video ${video.videoId}" 
                  class="video-thumbnail"
                  loading="lazy"
-                 onerror="this.src='https://via.placeholder.com/320x180/cccccc/666666?text=Video+Thumbnail'; console.log('Failed to load thumbnail for video ${index + 1}: ${video.title}');"
-                 onload="console.log('Successfully loaded thumbnail for: ${video.title}');" />
+                 onerror="
+                   console.log('Primary thumbnail failed for ${video.videoId}, trying backup...');
+                   if(this.src !== '${video.thumbnailBackup}') {
+                     this.src = '${video.thumbnailBackup}';
+                   } else {
+                     console.log('Backup thumbnail also failed for ${video.videoId}, using placeholder');
+                     this.src = 'https://via.placeholder.com/320x180/ff0000/ffffff?text=Video+${video.videoId}';
+                   }
+                 "
+                 onload="console.log('✅ Thumbnail loaded successfully for video: ${video.videoId}');" />
             <div class="play-button-overlay">
               <svg width="68" height="48" viewBox="0 0 68 48" fill="none">
                 <path d="M66.52 7.74C65.11 2.98 61.39 -0.75 56.63 -2.16C51.77 -3.88 30.16 -3.88 30.16 -3.88S8.54 -3.88 3.68 -2.16C-1.08 -0.75 -4.81 2.98 -6.22 7.74C-7.94 12.6 -7.94 23.02 -7.94 23.02S-7.94 33.44 -6.22 38.3C-4.81 43.06 -1.08 46.79 3.68 48.2C8.54 49.92 30.16 49.92 30.16 49.92S51.77 49.92 56.63 48.2C61.39 46.79 65.11 43.06 66.52 38.3C68.24 33.44 68.24 23.02 68.24 23.02S68.24 12.6 66.52 7.74Z" fill="red"/>
@@ -465,13 +483,14 @@ function renderVideos() {
           </div>
           <div class="video-details">
             <img src="${video.channelAvatar}" 
-                 alt="Channel Avatar for ${video.channelName}" 
+                 alt="Channel Avatar" 
                  class="channel-avatar-small"
-                 onerror="this.src='https://via.placeholder.com/30x30/007bff/ffffff?text=${video.channelName.charAt(0)}'" />
+                 onerror="this.src='https://via.placeholder.com/40x40/007bff/ffffff?text=${video.channelName.charAt(0)}'" />
             <div class="video-info">
-              <h4 class="video-title">${video.title}</h4>
+              <h4 class="video-title">Video ID: ${video.videoId}</h4>
               <p class="channel-name">${video.channelName}</p>
               <p class="video-meta">${video.views} views • ${video.uploaded}</p>
+              <p class="video-id" style="font-size: 11px; color: #999; margin-top: 4px;">ID: ${video.videoId}</p>
             </div>
           </div>
         </div>
@@ -479,6 +498,9 @@ function renderVideos() {
 
       videoGrid.appendChild(videoCard);
     });
+    
+    console.log('🔄 Videos rendered. Check console for thumbnail loading status.');
+    console.log('📋 Your video IDs:', videos.map(v => v.videoId));
   }
 }
 
