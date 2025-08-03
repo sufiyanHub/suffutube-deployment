@@ -18,7 +18,7 @@ const users = [
 const videos = [
     {
         thumbnail: 'https://img.youtube.com/vi/p6ca7gq5H70/maxresdefault.jpg',
-        title: 'Amazing Technology Demo - Latest Innovation',
+        title: 'Jo Tu Nahi To Aisa Main Chehra|| Maand Slowed and Reverb',
         channelName: 'Tech Innovations',
         channelAvatar: 'https://i.pravatar.cc/40?img=1',
         views: '2.3M',
@@ -27,7 +27,7 @@ const videos = [
     },
     {
         thumbnail: 'https://img.youtube.com/vi/lh5f69t7L9A/maxresdefault.jpg',
-        title: 'Ultimate Gaming Experience - Epic Gameplay',
+        title: 'Building a Three-Tier Architecture with EC2, RDS, ALB, ACM, and Route 53',
         channelName: 'Gaming World',
         channelAvatar: 'https://i.pravatar.cc/40?img=2',
         views: '1.8M',
@@ -36,7 +36,7 @@ const videos = [
     },
     {
         thumbnail: 'https://img.youtube.com/vi/QxddU3sjVRY/maxresdefault.jpg',
-        title: 'Mind-Blowing Science Experiment Results',
+        title: 'Shikayat by AUR | شکایت (Official Music Video)',
         channelName: 'Science Hub',
         channelAvatar: 'https://i.pravatar.cc/40?img=3',
         views: '950K',
@@ -45,7 +45,7 @@ const videos = [
     },
     {
         thumbnail: 'https://img.youtube.com/vi/VCy6o6WPgu8/maxresdefault.jpg',
-        title: 'Incredible Travel Adventure - Must Watch',
+        title: 'Aaram Haram Hai Success Ke Liye | SRK Motivation',
         channelName: 'Adventure Travel',
         channelAvatar: 'https://i.pravatar.cc/40?img=4',
         views: '3.1M',
@@ -54,7 +54,7 @@ const videos = [
     },
     {
         thumbnail: 'https://img.youtube.com/vi/_T3vfkl-3Vk/maxresdefault.jpg',
-        title: 'Masterclass in Creative Design Techniques',
+        title: 'Kubernetes Deployment Strategies Explained (Hands-On Project) | Crack DevOps Jobs',
         channelName: 'Design Masters',
         channelAvatar: 'https://i.pravatar.cc/40?img=5',
         views: '1.2M',
@@ -72,7 +72,7 @@ const videos = [
     },
     {
         thumbnail: 'https://img.youtube.com/vi/dEU2ibHQnjM/maxresdefault.jpg',
-        title: 'Fitness Transformation - 30 Day Challenge',
+        title: 'WORK HARD !!!',
         channelName: 'Fitness Pro',
         channelAvatar: 'https://i.pravatar.cc/40?img=7',
         views: '4.2M',
@@ -81,7 +81,7 @@ const videos = [
     },
     {
         thumbnail: 'https://img.youtube.com/vi/pxMUZavn3uY/maxresdefault.jpg',
-        title: 'Music Production Behind the Scenes',
+        title: 'Try Not To Laugh at Viral Hakla Shahrukh Khan + Fake Baba Roast ',
         channelName: 'Studio Sessions',
         channelAvatar: 'https://i.pravatar.cc/40?img=8',
         views: '1.5M',
