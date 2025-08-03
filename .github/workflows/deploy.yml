@@ -1,66 +1,28 @@
-name: Full CI/CD Pipeline - GH Pages & Docker
+name: Deploy to GitHub Pages # Name of your workflow
 
-# This workflow runs on pushes to the 'main' branch and can also be triggered manually
 on:
   push:
-    branches: [main]
-  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+    branches:
+      - main # This workflow runs when changes are pushed to the 'main' branch
 
-env:
-  # UPDATE THIS: Use your Docker Hub username and a suitable repository name for your Docker image
-  # Example: your-dockerhub-username/youtube-clone-frontend
-  DOCKER_IMAGE_NAME: sufiyanhub/youtube-clone-web # Suggested Docker Hub repo name
+  # Allows you to run this workflow manually from the Actions tab in GitHub
+  workflow_dispatch:
 
 jobs:
-  # --- Job 1: Deploy Static Site to GitHub Pages ---
-  deploy-gh-pages:
-    name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest # Runs on a fresh Ubuntu virtual machine
+  build-and-deploy:
+    runs-on: ubuntu-latest # Specifies the type of runner (virtual machine) to use
 
     steps:
-      - name: Checkout Code # Get your repository's code
-        uses: actions/checkout@v4
+    - name: Checkout Repository # Step 1: Get your code onto the runner
+      uses: actions/checkout@v4 # Uses the official GitHub action for checking out code
 
-      - name: Deploy Static Site # Use peaceiris action for GH Pages deployment
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Built-in token for permissions
-          publish_dir: ./src # Your website files are in the 'src' folder
-          publish_branch: gh-pages # Deploy to the 'gh-pages' branch (default for this action)
-
-  # --- Job 2: Build and Push Docker Image to Docker Hub ---
-  build-and-push-docker:
-    name: Build & Push Docker Image
-    runs-on: ubuntu-latest # Runs on a separate Ubuntu virtual machine
-
-    steps:
-      - name: Checkout Code # Get your repository's code
-        uses: actions/checkout@v4
-
-      - name: Log in to Docker Hub # Authenticate with Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-
-      - name: Build Docker Image # Build the image, using 'src' as the build context
-        # This assumes your Dockerfile is at 'src/Dockerfile' and your static files are also in 'src/'
-        run: docker build -t ${{ env.DOCKER_IMAGE_NAME }}:latest ./src
-
-      - name: Push Docker Image # Push the built image to Docker Hub
-        run: docker push ${{ env.DOCKER_IMAGE_NAME }}:latest
-
-  # --- Job 3: Notify Slack on Docker Push Completion ---
-  notify-slack:
-    name: Notify Slack
-    needs: build-and-push-docker # This job will only run AFTER 'build-and-push-docker' completes
-    runs-on: ubuntu-latest
-    if: success() # Only run this notification if the previous job (Docker push) was successful
-
-    steps:
-      - name: Send Slack Notification via AWS Lambda # Use curl to send a POST request to your Lambda URL
-        run: |
-          curl -X POST "${{ secrets.LAMBDA_FUNCTION_URL }}" \
-          -H "Content-Type: application/json" \
-          -d '{
-            "message": "✅ Docker image pushed to Docker Hub: '${{ env.DOCKER_IMAGE_NAME }}:latest' for repository ${{ github.repository }} (Commit: ${{ github.sha }})"
-          }'
-        env:
-          LAMBDA_FUNCTION_URL: ${{ secrets.LAMBDA_FUNCTION_URL }} # Your secret Lambda URL
+    - name: Deploy to GitHub Pages # Step 2: Deploy your site
+      uses: peaceiris/actions-gh-pages@v4 # Uses the peaceiris GitHub Pages deployment action
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }} # Uses the automatically provided GitHub token for authentication
+        # IMPORTANT: This tells the action that your website files are inside the 'src' folder
+        # The contents of 'src' will be copied to the root of the 'gh-pages' branch
+        publish_dir: ./src
+        # Optional: Explicitly define the branch to publish to (default is gh-pages)
+        # It's good practice to be explicit.
+        publish_branch: gh-pages
