@@ -280,7 +280,10 @@ function renderVideos() {
     videos.forEach(video => {
       // Create an anchor (<a>) element to make the video card clickable
       const videoLink = document.createElement('a');
+      
+      // *** This is the corrected line ***
       videoLink.href = `https://www.youtube.com/watch?v=${video.videoId}`;
+      
       videoLink.target = '_blank'; // Opens the link in a new tab
       videoLink.style.textDecoration = 'none'; // Removes the default underline
       videoLink.style.color = 'inherit'; // Ensures text color is inherited
