@@ -14,12 +14,100 @@ const users = [
   }
 ];
 
-// Your video and subscription data... (I'll keep this part brief for clarity)
+// Dummy video data
 const videos = [
-  // ...your video objects
+  {
+    thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg',
+    title: 'The Angrez 2 Comedy Scenes Back to Back',
+    channelName: 'Gaming Nexus',
+    channelAvatar: 'https://i.pravatar.cc/30?img=1',
+    views: '5.2M',
+    uploaded: '3 weeks ago'
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg',
+    title: 'PATNI NANAND AUR WEDDING ANNIVERSARY!',
+    channelName: 'Sufiyan Mohd',
+    channelAvatar: 'https://i.pravatar.cc/30?img=68',
+    views: '10.8M',
+    uploaded: '2 years ago'
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/Go8y0V6h_Hk/hqdefault.jpg',
+    title: 'Action Blockbuster 2025 - "Urban Warfare" Final Trailer',
+    channelName: 'Cinema Central',
+    channelAvatar: 'https://i.pravatar.cc/30?img=3',
+    views: '7.1M',
+    uploaded: '1 month ago'
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/V_fGg4IeP2E/hqdefault.jpg',
+    title: 'Hilarious Gaming Moments - Stream Highlights #42',
+    channelName: 'Pro Gamer Livestream',
+    channelAvatar: 'https://i.pravatar.cc/30?img=4',
+    views: '2.9M',
+    uploaded: '4 days ago'
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/PkZNo7MFoBs/hqdefault.jpg',
+    title: 'Soulful Acoustic Cover - "Fading Lights"',
+    channelName: 'Acoustic Vibes',
+    channelAvatar: 'https://i.pravatar.cc/30?img=5',
+    views: '1.5M',
+    uploaded: '5 days ago'
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/nu_pC_CUEiE/hqdefault.jpg',
+    title: 'Pokémon: DP Sinnoh League Victors | EP32 The Semi-Final Frontier!',
+    channelName: 'Sufiyan Mohd',
+    channelAvatar: 'https://i.pravatar.cc/30?img=68',
+    views: '3.4M',
+    uploaded: '3 weeks ago'
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/lQ0gQp9k3-g/hqdefault.jpg',
+    title: 'Indie Game Gem: "Pixel Adventures" Full Review',
+    channelName: 'Indie Gamers Unite',
+    channelAvatar: 'https://i.pravatar.cc/30?img=7',
+    views: '800K',
+    uploaded: '1 week ago'
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/W6NZfCO5sks/hqdefault.jpg',
+    title: 'Nanal Nagar STREET FOOD | Tolichowki, Quba Masjid',
+    channelName: 'K-Pop Zone',
+    channelAvatar: 'https://i.pravatar.cc/30?img=8',
+    views: '9.1M',
+    uploaded: '6 days ago'
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/qdsz66kU3iY/hqdefault.jpg',
+    title: 'Powerful Documentary - "The Ocean\'s Cry" Trailer',
+    channelName: 'Sufiyan Mohd',
+    channelAvatar: 'https://i.pravatar.cc/30?img=68',
+    views: '1.1M',
+    uploaded: '2 months ago'
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/rfscVS0vtbw/hqdefault.jpg',
+    title: 'Top Esports Plays of the Month - Pro League Highlights',
+    channelName: 'Esports Arena',
+    channelAvatar: 'https://i.pravatar.cc/30?img=10',
+    views: '4.8M',
+    uploaded: '1 month ago'
+  }
 ];
+
+// Dummy subscription data
 const subscriptions = [
-  // ...your subscription objects
+  { name: 'Gaming Nexus', avatar: 'https://i.pravatar.cc/30?img=1' },
+  { name: 'Sufiyan Mohd', avatar: 'https://i.pravatar.cc/30?img=68' },
+  { name: 'Cinema Central', avatar: 'https://i.pravatar.cc/30?img=3' },
+  { name: 'Pro Gamer Livestream', avatar: 'https://i.pravatar.cc/30?img=4' },
+  { name: 'Acoustic Vibes', avatar: 'https://i.pravatar.cc/30?img=5' },
+  { name: 'Indie Gamers Unite', avatar: 'https://i.pravatar.cc/30?img=7' },
+  { name: 'K-Pop Zone', avatar: 'https://i.pravatar.cc/30?img=8' },
+  { name: 'Esports Arena', avatar: 'https://i.pravatar.cc/30?img=10' }
 ];
 
 // DOM Elements
@@ -30,7 +118,6 @@ let currentUserName, userAvatar, logoutBtn, videoGrid, subscriptionsList, menuIc
 document.addEventListener('DOMContentLoaded', function() {
   initializeElements();
   setupEventListeners();
-  initializeYouTubeApp();
   checkExistingLogin();
 });
 
@@ -143,7 +230,6 @@ function getCurrentUser() {
       window.currentUser = JSON.parse(storedUser);
       return window.currentUser;
     } catch (e) {
-      console.error('Error parsing stored user:', e);
       localStorage.removeItem('currentUser');
     }
   }
@@ -198,20 +284,39 @@ function logout() {
 
 function renderVideos() {
   if (videoGrid) {
-    videoGrid.innerHTML = '';
-    // ... (rest of your video rendering logic)
+    videoGrid.innerHTML = ''; // Clear existing content
+    videos.forEach(video => {
+      const videoCard = document.createElement('div');
+      videoCard.className = 'video-card';
+      videoCard.innerHTML = `
+        <img src="${video.thumbnail}" alt="Video Thumbnail" class="video-thumbnail" />
+        <div class="video-details">
+          <img src="${video.channelAvatar}" alt="Channel Avatar" class="channel-avatar-small" />
+          <div class="video-info">
+            <h4 class="video-title">${video.title}</h4>
+            <p class="channel-name">${video.channelName}</p>
+            <p class="video-meta">${video.views} views • ${video.uploaded}</p>
+          </div>
+        </div>
+      `;
+      videoGrid.appendChild(videoCard);
+    });
   }
 }
 
 function renderSubscriptions() {
   if (subscriptionsList) {
-    subscriptionsList.innerHTML = '';
-    // ... (rest of your subscription rendering logic)
+    subscriptionsList.innerHTML = ''; // Clear existing content
+    subscriptions.forEach(sub => {
+      const subItem = document.createElement('div');
+      subItem.className = 'sidebar-item';
+      subItem.innerHTML = `
+        <img src="${sub.avatar}" alt="Channel Avatar" class="channel-avatar" />
+        <span>${sub.name}</span>
+      `;
+      subscriptionsList.appendChild(subItem);
+    });
   }
-}
-
-function initializeYouTubeApp() {
-  // Any initial setup for the YouTube page can go here
 }
 
 function toggleSidebar() {
