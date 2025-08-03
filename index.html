@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YouTube Clone - Login</title>
+  <title>YouTube Clone</title>
+  <link rel="stylesheet" href="#" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
   <style>
     * {
@@ -12,7 +13,8 @@
       box-sizing: border-box;
     }
 
-    body {
+    /* ========== LOGIN PAGE STYLES ========== */
+    body.login-mode {
       font-family: 'Roboto', Arial, sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
@@ -21,7 +23,6 @@
       justify-content: center;
     }
 
-    /* Login Page Styles */
     .login-container {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
@@ -156,9 +157,31 @@
       display: none;
     }
 
-    /* YouTube Main App Styles */
+    /* ========== YOUTUBE APP STYLES ========== */
+    body.app-mode {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .login-page {
+      display: none;
+    }
+
     .youtube-app {
       display: none;
+    }
+
+    body.login-mode .login-page {
+      display: block;
+    }
+
+    body.app-mode .login-page {
+      display: none !important;
+    }
+
+    body.app-mode .youtube-app {
+      display: block !important;
     }
 
     .header {
@@ -219,25 +242,29 @@
       margin-left: 10px;
     }
 
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
     .logout-btn {
-      background: none;
+      background: #ff0000;
+      color: white;
       border: none;
-      color: #666;
-      cursor: pointer;
-      margin-left: 10px;
-      padding: 5px;
+      padding: 6px 12px;
       border-radius: 4px;
+      cursor: pointer;
       font-size: 12px;
+      margin-left: 10px;
     }
 
     .logout-btn:hover {
-      background: #f0f0f0;
+      background: #cc0000;
     }
 
     .main-content {
       display: flex;
-      background-color: #f9f9f9;
-      min-height: calc(100vh - 60px);
     }
 
     .sidebar {
@@ -245,10 +272,14 @@
       padding: 20px 10px;
       background-color: #fff;
       border-right: 1px solid #ddd;
-      height: calc(100vh - 60px);
+      height: 100vh;
       position: sticky;
       top: 60px;
       overflow-y: auto;
+    }
+
+    .sidebar.collapsed {
+      width: 70px;
     }
 
     .sidebar-item {
@@ -266,13 +297,11 @@
 
     .sidebar-item span.material-icons {
       margin-right: 15px;
-      font-size: 20px;
     }
 
     .sidebar-item.active {
-      background-color: #e8f0fe;
-      font-weight: 500;
-      color: #1976d2;
+      background-color: #f0f0f0;
+      font-weight: bold;
     }
 
     .sidebar hr {
@@ -298,23 +327,23 @@
     .video-grid {
       flex: 1;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
       padding: 20px;
+      margin-left: 20px;
     }
 
     .video-card {
       background-color: white;
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
       cursor: pointer;
     }
 
     .video-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
     }
 
     .video-thumbnail {
@@ -346,10 +375,6 @@
       color: #333;
       margin: 0 0 4px 0;
       line-height: 1.3;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
 
     .channel-name {
@@ -362,13 +387,6 @@
       font-size: 13px;
       color: #666;
       margin: 0;
-    }
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      color: #333;
     }
 
     @media (max-width: 768px) {
@@ -390,13 +408,12 @@
       }
 
       .video-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 16px;
+        margin-left: 0;
       }
     }
   </style>
 </head>
-<body>
+<body class="login-mode">
   <!-- Login Page -->
   <div class="login-page" id="loginPage">
     <div class="login-container">
@@ -470,6 +487,7 @@
             src="https://i.pravatar.cc/30?img=68"
             alt="User Avatar"
             class="user-avatar"
+            id="userAvatar"
           />
           <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
@@ -524,226 +542,288 @@
   <script>
     // Dummy user data
     const users = [
-      { email: 'sufiyan@youtube.com', password: 'password123', name: 'Sufiyan Mohd' },
-      { email: 'admin@youtube.com', password: 'admin456', name: 'Admin User' }
+      { email: 'sufiyan@youtube.com', password: 'password123', name: 'Sufiyan Mohd', avatar: 'https://i.pravatar.cc/30?img=68' },
+      { email: 'admin@youtube.com', password: 'admin456', name: 'Admin User', avatar: 'https://i.pravatar.cc/30?img=1' }
     ];
 
-    // Video data and other app logic
+    // Your original video and subscription data
     const videos = [
-      {
-        thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg',
-        title: 'The Angrez 2 Comedy Scenes Back to Back',
-        channelName: 'Gaming Nexus',
-        channelAvatar: 'https://i.pravatar.cc/30?img=1',
-        views: '5.2M',
-        uploaded: '3 weeks ago'
-      },
-      {
-        thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg',
-        title: 'PATNI NANAND AUR WEDDING ANNIVERSARY!',
-        channelName: 'Sufiyan Mohd',
-        channelAvatar: 'https://i.pravatar.cc/30?img=68',
-        views: '10.8M',
-        uploaded: '2 years ago'
-      },
-      {
-        thumbnail: 'https://youtu.be/w098Gj0F12w?si=BVdtkmjv4SYxyWJi',
-        title: 'MADINA'S MOST DELICIOUS Street Food Secrets Revealed!',
-        channelName: 'Cinema Central',
-        channelAvatar: 'https://i.pravatar.cc/30?img=3',
-        views: '7.1M',
-        uploaded: '1 month ago'
-      },
-      {
-        thumbnail: 'https://i.ytimg.com/vi/V_fGg4IeP2E/hqdefault.jpg',
-        title: 'Hilarious Gaming Moments - Stream Highlights #42',
-        channelName: 'Pro Gamer Livestream',
-        channelAvatar: 'https://i.pravatar.cc/30?img=4',
-        views: '2.9M',
-        uploaded: '4 days ago'
-      },
-      {
-        thumbnail: 'https://i.ytimg.com/vi/PkZNo7MFoBs/hqdefault.jpg',
-        title: 'Soulful Acoustic Cover - "Fading Lights"',
-        channelName: 'Acoustic Vibes',
-        channelAvatar: 'https://i.pravatar.cc/30?img=5',
-        views: '1.5M',
-        uploaded: '5 days ago'
-      },
-      {
-        thumbnail: 'https://i.ytimg.com/vi/nu_pC_CUEiE/hqdefault.jpg',
-        title: 'Pokémon: DP Sinnoh League Victors | EP32 The Semi-Final Frontier!',
-        channelName: 'Sufiyan Mohd',
-        channelAvatar: 'https://i.pravatar.cc/30?img=68',
-        views: '3.4M',
-        uploaded: '3 weeks ago'
-      }
+        {
+            thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg',
+            title: 'The Angrez 2 Comedy Scenes Back to Back ',
+            channelName: 'Gaming Nexus',
+            channelAvatar: 'https://i.pravatar.cc/30?img=1',
+            views: '5.2M',
+            uploaded: '3 weeks ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg',
+            title: 'PATNI NANAND AUR WEDDING ANNIVERSARY!',
+            channelName: 'Sufiyan Mohd',
+            channelAvatar: 'https://i.pravatar.cc/30?img=68',
+            views: '10.8M',
+            uploaded: '2 years ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/Go8y0V6h_Hk/hqdefault.jpg',
+            title: 'Action Blockbuster 2025 - "Urban Warfare" Final Trailer',
+            channelName: 'Cinema Central',
+            channelAvatar: 'https://i.pravatar.cc/30?img=3',
+            views: '7.1M',
+            uploaded: '1 month ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/V_fGg4IeP2E/hqdefault.jpg',
+            title: 'Hilarious Gaming Moments - Stream Highlights #42',
+            channelName: 'Pro Gamer Livestream',
+            channelAvatar: 'https://i.pravatar.cc/30?img=4',
+            views: '2.9M',
+            uploaded: '4 days ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/PkZNo7MFoBs/hqdefault.jpg',
+            title: 'Soulful Acoustic Cover - "Fading Lights"',
+            channelName: 'Acoustic Vibes',
+            channelAvatar: 'https://i.pravatar.cc/30?img=5',
+            views: '1.5M',
+            uploaded: '5 days ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/nu_pC_CUEiE/hqdefault.jpg',
+            title: 'Pokémon: DP Sinnoh League Victors | EP32 The Semi-Final Frontier!',
+            channelName: 'Sufiyan Mohd',
+            channelAvatar: 'https://i.pravatar.cc/30?img=68',
+            views: '3.4M',
+            uploaded: '3 weeks ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/lQ0gQp9k3-g/hqdefault.jpg',
+            title: 'Indie Game Gem: "Pixel Adventures" Full Review',
+            channelName: 'Indie Gamers Unite',
+            channelAvatar: 'https://i.pravatar.cc/30?img=7',
+            views: '800K',
+            uploaded: '1 week ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/W6NZfCO5sks/hqdefault.jpg',
+            title: 'Nanal Nagar STREET FOOD | Tolichowki, Quba Masjid',
+            channelName: 'K-Pop Zone',
+            channelAvatar: 'https://i.pravatar.cc/30?img=8',
+            views: '9.1M',
+            uploaded: '6 days ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/qdsz66kU3iY/hqdefault.jpg',
+            title: 'Powerful Documentary - "The Ocean\'s Cry" Trailer',
+            channelName: 'Sufiyan Mohd',
+            channelAvatar: 'https://i.pravatar.cc/30?img=68',
+            views: '1.1M',
+            uploaded: '2 months ago'
+        },
+        {
+            thumbnail: 'https://i.ytimg.com/vi/rfscVS0vtbw/hqdefault.jpg',
+            title: 'Top Esports Plays of the Month - Pro League Highlights',
+            channelName: 'Esports Arena',
+            channelAvatar: 'https://i.pravatar.cc/30?img=10',
+            views: '4.8M',
+            uploaded: '1 month ago'
+        }
     ];
 
     const subscriptions = [
-      { name: 'Gaming Nexus', avatar: 'https://i.pravatar.cc/30?img=1' },
-      { name: 'Sufiyan Mohd', avatar: 'https://i.pravatar.cc/30?img=68' },
-      { name: 'Cinema Central', avatar: 'https://i.pravatar.cc/30?img=3' },
-      { name: 'Pro Gamer Livestream', avatar: 'https://i.pravatar.cc/30?img=4' },
-      { name: 'Acoustic Vibes', avatar: 'https://i.pravatar.cc/30?img=5' }
+        { name: 'Gaming Nexus', avatar: 'https://i.pravatar.cc/30?img=1' },
+        { name: 'Sufiyan Mohd', avatar: 'https://i.pravatar.cc/30?img=68' },
+        { name: 'Cinema Central', avatar: 'https://i.pravatar.cc/30?img=3' },
+        { name: 'Pro Gamer Livestream', avatar: 'https://i.pravatar.cc/30?img=4' },
+        { name: 'Acoustic Vibes', avatar: 'https://i.pravatar.cc/30?img=5' },
+        { name: 'Indie Gamers Unite', avatar: 'https://i.pravatar.cc/30?img=7' },
+        { name: 'K-Pop Zone', avatar: 'https://i.pravatar.cc/30?img=8' },
+        { name: 'Esports Arena', avatar: 'https://i.pravatar.cc/30?img=10' }
     ];
 
-    // Initialize app
+    // Initialize app when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
-      // Check if user is already logged in
-      const currentUser = getCurrentUser();
-      if (currentUser) {
-        showYouTubeApp(currentUser);
-      }
+        // Check if user is already logged in
+        const currentUser = getCurrentUser();
+        if (currentUser) {
+            showYouTubeApp(currentUser);
+        }
 
-      // Login form handler
-      document.getElementById('loginForm').addEventListener('submit', handleLogin);
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
 
-      // Initialize YouTube app components
-      initializeYouTubeApp();
+        // Initialize YouTube app components
+        initializeYouTubeApp();
     });
 
+    // Login Functions
     function fillDemoUser(email, password) {
-      document.getElementById('email').value = email;
-      document.getElementById('password').value = password;
+        document.getElementById('email').value = email;
+        document.getElementById('password').value = password;
     }
 
     function handleLogin(e) {
-      e.preventDefault();
-      
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const loading = document.getElementById('loading');
-      const errorMessage = document.getElementById('errorMessage');
-      
-      // Hide error message
-      errorMessage.style.display = 'none';
-      
-      // Show loading
-      loading.style.display = 'block';
-      
-      // Simulate API call delay
-      setTimeout(() => {
-        loading.style.display = 'none';
+        e.preventDefault();
         
-        // Check credentials
-        const user = users.find(u => u.email === email && u.password === password);
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const loading = document.getElementById('loading');
+        const errorMessage = document.getElementById('errorMessage');
         
-        if (user) {
-          // Store user session (in real app, use secure tokens)
-          storeUserSession(user);
-          showYouTubeApp(user);
-        } else {
-          errorMessage.style.display = 'block';
-        }
-      }, 1500);
+        // Hide error message
+        errorMessage.style.display = 'none';
+        
+        // Show loading
+        loading.style.display = 'block';
+        
+        // Simulate API call delay
+        setTimeout(() => {
+            loading.style.display = 'none';
+            
+            // Check credentials
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Store user session
+                storeUserSession(user);
+                showYouTubeApp(user);
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }, 1500);
     }
 
     function storeUserSession(user) {
-      // Store user in memory (in real app, use secure tokens/cookies)
-      window.currentUser = user;
+        // Store user in memory (in real app, use secure tokens/cookies)
+        window.currentUser = user;
     }
 
     function getCurrentUser() {
-      return window.currentUser || null;
+        return window.currentUser || null;
     }
 
     function showYouTubeApp(user) {
-      document.getElementById('loginPage').style.display = 'none';
-      document.getElementById('youtubeApp').style.display = 'block';
-      document.getElementById('currentUserName').textContent = user.name;
-      document.body.style.background = '#f9f9f9';
+        // Switch body class to show YouTube app
+        document.body.className = 'app-mode';
+        
+        // Hide login page and show YouTube app
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('youtubeApp').style.display = 'block';
+        
+        // Update user info in header
+        document.getElementById('currentUserName').textContent = user.name;
+        document.getElementById('userAvatar').src = user.avatar;
+        
+        console.log('Switched to YouTube app for user:', user.name);
     }
 
     function logout() {
-      window.currentUser = null;
-      document.getElementById('loginPage').style.display = 'flex';
-      document.getElementById('youtubeApp').style.display = 'none';
-      document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-      
-      // Clear form
-      document.getElementById('loginForm').reset();
+        window.currentUser = null;
+        
+        // Switch back to login mode
+        document.body.className = 'login-mode';
+        document.getElementById('loginPage').style.display = 'block';
+        document.getElementById('youtubeApp').style.display = 'none';
+        
+        // Clear form
+        document.getElementById('loginForm').reset();
+        document.getElementById('errorMessage').style.display = 'none';
+        
+        console.log('Logged out - switched to login page');
     }
 
+    // YouTube App Functions (your original code enhanced)
     function initializeYouTubeApp() {
-      const videoGrid = document.getElementById('video-grid');
-      const subscriptionsList = document.getElementById('subscriptions-list');
+        const videoGrid = document.getElementById('video-grid');
+        const subscriptionsList = document.getElementById('subscriptions-list');
 
-      // Create video cards
-      function createVideoCard(video) {
-        const videoCard = document.createElement('div');
-        videoCard.classList.add('video-card');
+        // Function to create a video card
+        function createVideoCard(video) {
+            const videoCard = document.createElement('div');
+            videoCard.classList.add('video-card');
 
-        videoCard.innerHTML = `
-          <img src="${video.thumbnail}" alt="Video Thumbnail" class="video-thumbnail">
-          <div class="video-details">
-            <img src="${video.channelAvatar}" alt="Channel Avatar" class="channel-avatar-small">
-            <div class="video-info">
-              <h3 class="video-title">${video.title}</h3>
-              <p class="channel-name">${video.channelName}</p>
-              <p class="video-meta">${video.views} views • ${video.uploaded}</p>
-            </div>
-          </div>
-        `;
-        return videoCard;
-      }
-
-      // Create subscription items
-      function createSubscriptionItem(subscription) {
-        const subscriptionItem = document.createElement('div');
-        subscriptionItem.classList.add('sidebar-item');
-
-        subscriptionItem.innerHTML = `
-          <img src="${subscription.avatar}" alt="Channel Avatar" class="channel-avatar">
-          <span>${subscription.name}</span>
-        `;
-        return subscriptionItem;
-      }
-
-      // Render videos
-      videos.forEach(video => {
-        videoGrid.appendChild(createVideoCard(video));
-      });
-
-      // Render subscriptions
-      subscriptions.forEach(sub => {
-        subscriptionsList.appendChild(createSubscriptionItem(sub));
-      });
-
-      // Sidebar toggle
-      const menuIcon = document.querySelector('.menu-icon');
-      const sidebar = document.querySelector('.sidebar');
-
-      menuIcon.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-        if (sidebar.classList.contains('collapsed')) {
-          sidebar.style.width = '70px';
-          sidebar.querySelectorAll('span:last-child, h3').forEach(el => el.style.display = 'none');
-        } else {
-          sidebar.style.width = '240px';
-          sidebar.querySelectorAll('span:last-child, h3').forEach(el => el.style.display = 'block');
+            videoCard.innerHTML = `
+                <img src="${video.thumbnail}" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="video-details">
+                    <img src="${video.channelAvatar}" alt="Channel Avatar" class="channel-avatar-small">
+                    <div class="video-info">
+                        <h3 class="video-title">${video.title}</h3>
+                        <p class="channel-name">${video.channelName}</p>
+                        <p class="video-meta">${video.views} views • ${video.uploaded}</p>
+                    </div>
+                </div>
+            `;
+            return videoCard;
         }
-      });
 
-      // Search functionality
-      const searchButton = document.querySelector('.search-button');
-      const searchBar = document.querySelector('.search-bar');
+        // Function to create a subscription item
+        function createSubscriptionItem(subscription) {
+            const subscriptionItem = document.createElement('div');
+            subscriptionItem.classList.add('sidebar-item');
 
-      searchButton.addEventListener('click', () => {
-        const searchTerm = searchBar.value.trim();
-        if (searchTerm) {
-          alert(`Searching for: "${searchTerm}"\n(This is a demo search)`);
+            subscriptionItem.innerHTML = `
+                <img src="${subscription.avatar}" alt="Channel Avatar" class="channel-avatar">
+                <span>${subscription.name}</span>
+            `;
+            return subscriptionItem;
         }
-      });
 
-      // Video click handler
-      document.body.addEventListener('click', (event) => {
-        const videoCard = event.target.closest('.video-card');
-        if (videoCard) {
-          const title = videoCard.querySelector('.video-title').textContent;
-          alert(`You clicked on: "${title}"\n(In a real YouTube, this would play the video)`);
-        }
-      });
+        // Render videos (main grid)
+        videos.forEach(video => {
+            videoGrid.appendChild(createVideoCard(video));
+        });
+
+        // Render subscriptions
+        subscriptions.forEach(sub => {
+            subscriptionsList.appendChild(createSubscriptionItem(sub));
+        });
+
+        // Basic Sidebar Toggle
+        const menuIcon = document.querySelector('.menu-icon');
+        const sidebar = document.querySelector('.sidebar');
+        const videoGridElement = document.querySelector('.video-grid');
+
+        menuIcon.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            if (sidebar.classList.contains('collapsed')) {
+                sidebar.style.width = '70px';
+                sidebar.querySelectorAll('span:last-child, h3').forEach(el => el.style.display = 'none');
+                sidebar.querySelectorAll('.sidebar-item').forEach(item => item.style.justifyContent = 'center');
+                videoGridElement.style.marginLeft = '0px';
+            } else {
+                sidebar.style.width = '240px';
+                sidebar.querySelectorAll('span:last-child, h3').forEach(el => el.style.display = 'block');
+                sidebar.querySelectorAll('.sidebar-item').forEach(item => item.style.justifyContent = 'flex-start');
+                videoGridElement.style.marginLeft = '20px';
+            }
+        });
+
+        // Handle search
+        const searchButton = document.querySelector('.search-button');
+        const searchBar = document.querySelector('.search-bar');
+
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchBar.value.trim();
+            if (searchTerm) {
+                alert(`Searching for: "${searchTerm}"\n(This is a dummy search, no actual results will be shown.)`);
+            }
+        });
+
+        // Enter key for search
+        searchBar.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchButton.click();
+            }
+        });
+
+        // Add click event for video cards
+        document.body.addEventListener('click', (event) => {
+            const videoCard = event.target.closest('.video-card');
+            if (videoCard) {
+                const title = videoCard.querySelector('.video-title').textContent;
+                alert(`You clicked on: "${title}"\n(In a real YouTube, this would take you to the video page for playback.)`);
+            }
+        });
     }
   </script>
 </body>
