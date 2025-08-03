@@ -264,16 +264,19 @@ function logout() {
 // CORRECTED renderVideos function with a valid YouTube URL
 function renderVideos() {
   if (videoGrid) {
-    videoGrid.innerHTML = '';
+    videoGrid.innerHTML = ''; // Clear existing content
     videos.forEach(video => {
+      // Create an anchor (<a>) element to make the video card clickable
       const videoLink = document.createElement('a');
-      
-      // *** THIS IS THE CORRECT URL FORMAT ***
+
+      // *** THIS IS THE CORRECT URL FORMAT. IT USES THE OFFICIAL YOUTUBE DOMAIN. ***
       videoLink.href = `https://www.youtube.com/watch?v=${video.videoId}`;
-      
-      videoLink.target = '_blank';
-      videoLink.style.textDecoration = 'none';
-      videoLink.style.color = 'inherit';
+
+      videoLink.target = '_blank'; // Opens the link in a new tab
+      videoLink.style.textDecoration = 'none'; // Removes the default underline
+      videoLink.style.color = 'inherit'; // Ensures text color is inherited
+
+      // Populate the link with the video card's HTML content
       videoLink.innerHTML = `
         <div class="video-card">
           <img src="${video.thumbnail}" alt="Video Thumbnail" class="video-thumbnail" />
@@ -287,6 +290,7 @@ function renderVideos() {
           </div>
         </div>
       `;
+
       videoGrid.appendChild(videoLink);
     });
   }
