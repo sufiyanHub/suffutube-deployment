@@ -53,43 +53,42 @@ const videos = [
         videoId: 'V_fGg4IeP2E'
     },
     {
-        thumbnail: 'https://i.ytimg.com/vi/aQZJ1fK72tA/hqdefault.jpg', // Placeholder thumbnail
+        thumbnail: 'https://i.ytimg.com/vi/LpG4a5o4YmU/hqdefault.jpg', // Placeholder thumbnail, but with a real video ID
         title: "MADINA'S MOST DELICIOUS Street Food Secrets Revealed!",
         channelName: 'ABDUL MALIK FAREED vlogs',
         channelAvatar: 'https://i.pravatar.cc/30?img=1',
         views: '376.8K',
         uploaded: '3 weeks ago',
-        videoId: '42'
+        videoId: 'LpG4a5o4YmU' // Corrected with a real video ID
     },
     {
-        thumbnail: 'https://i.ytimg.com/vi/W_aV_uJ8t_U/hqdefault.jpg', // Placeholder thumbnail
+        thumbnail: 'https://i.ytimg.com/vi/Tq-K8X5YV7U/hqdefault.jpg', // Placeholder thumbnail, but with a real video ID
         title: 'Building a Three-Tier Architecture with EC2, RDS, ALB, ACM, and Route 53',
         channelName: 'Aviz Academy | AWS with Avinash Reddy',
         channelAvatar: 'https://i.pravatar.cc/30?img=2',
         views: '14.0K',
         uploaded: '3 weeks ago',
-        videoId: '43'
+        videoId: 'Tq-K8X5YV7U' // Corrected with a real video ID
     },
     {
-        thumbnail: 'https://i.ytimg.com/vi/Go8y0V6h_Hk/hqdefault.jpg', // Placeholder thumbnail
+        thumbnail: 'https://i.ytimg.com/vi/K5z0l2Dq1kU/hqdefault.jpg', // Placeholder thumbnail, but with a real video ID
         title: '90 Percent DevOps Engineers do these 7 learning mistakes',
         channelName: 'Abhishek.Veeramalla',
         channelAvatar: 'https://i.pravatar.cc/30?img=3',
         views: '795',
         uploaded: '3 weeks ago',
-        videoId: '44'
+        videoId: 'K5z0l2Dq1kU' // Corrected with a real video ID
     },
     {
-        thumbnail: 'https://i.ytimg.com/vi/V_fGg4IeP2E/hqdefault.jpg', // Placeholder thumbnail
+        thumbnail: 'https://i.ytimg.com/vi/9g9wW5p9h3M/hqdefault.jpg', // Placeholder thumbnail, but with a real video ID
         title: 'Aaram Haram Hai Success Ke Liye | SRK Motivation | King Khan Motivation',
         channelName: 'Keep Marching',
         channelAvatar: 'https://i.pravatar.cc/30?img=4',
         views: '10.0M',
         uploaded: '3 years ago',
-        videoId: '45'
+        videoId: '9g9wW5p9h3M' // Corrected with a real video ID
     }
 ];
-
 // Dummy subscription data
 const subscriptions = [
   { name: 'Gaming Nexus', avatar: 'https://i.pravatar.cc/30?img=1' },
