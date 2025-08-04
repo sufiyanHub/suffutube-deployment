@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - Docker to AWS ECR + Slack Notification
+name: CI/CD Pipeline - Docker + Slack Notification
 
 on:
   push:
@@ -6,10 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: youtube-deployment
-  AWS_REGION: ap-south-1  # Change to your region
-  AWS_ACCOUNT_ID: 123456789012  # Replace with your AWS Account ID
-  ECR_REGISTRY: 123456789012.dkr.ecr.ap-south-1.amazonaws.com
+  IMAGE_NAME: sufiyanhub/youtube-deployment
 
 jobs:
   build-and-push:
@@ -19,24 +16,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      - name: Log in to Amazon ECR
-        run: |
-          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
-
+      # ✅ Correct Docker build path and Dockerfile path
       - name: Build Docker image
-        run: |
-          docker build -t $IMAGE_NAME:latest -f ./src/Dockerfile ./src
-          docker tag $IMAGE_NAME:latest $ECR_REGISTRY/$IMAGE_NAME:latest
+        run: docker build -t $IMAGE_NAME:latest -f ./src/Dockerfile ./src
 
-      - name: Push Docker image to ECR
-        run: docker push $ECR_REGISTRY/$IMAGE_NAME:latest
+      - name: Push Docker image
+        run: docker push $IMAGE_NAME:latest
 
   notify-slack:
     needs: build-and-push
@@ -48,7 +36,8 @@ jobs:
           curl -X POST "$LAMBDA_FUNCTION_URL" \
           -H "Content-Type: application/json" \
           -d '{
-            "message": "✅ Docker image pushed to AWS ECR: '${{ env.ECR_REGISTRY }}/${{ env.IMAGE_NAME }}:latest' "
+            "message": "✅ Docker image pushed to Docker Hub: '${{ env.IMAGE_NAME }}:latest'"
           }'
+
         env:
           LAMBDA_FUNCTION_URL: ${{ secrets.LAMBDA_FUNCTION_URL }}
