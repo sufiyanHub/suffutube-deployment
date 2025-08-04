@@ -49,4 +49,4 @@ jobs:
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f k8s-deployment.yml
-        kubectl set image deployment/youtube-clone-deployment youtube-clone=${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }}
+        kubectl set image deployment/youtube-clone-deployment youtube-deployment=${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }}
