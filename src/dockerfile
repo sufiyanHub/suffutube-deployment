@@ -1,13 +1,14 @@
-# Use an official Nginx image as the base
+# Use official Nginx image
 FROM nginx:alpine
 
-# Copy your static files from the 'src' directory (which will be the build context)
-# to the Nginx default web root directory.
-# Note: Since the build context will be 'src', './' refers to 'src' itself.
-COPY . /usr/share/nginx/html
+# Remove default Nginx static files
+RUN rm -rf /usr/share/nginx/html/*
 
-# Expose port 80 (Nginx default HTTP port)
+# Copy static files from src/ to Nginx web root
+COPY src/ /usr/share/nginx/html
+
+# Expose port 80
 EXPOSE 80
 
-# Command to run Nginx when the container starts
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
