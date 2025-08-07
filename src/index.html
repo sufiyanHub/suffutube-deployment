@@ -3,34 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YouTube Clone</title>
+  <title>SuffuTube - Your Ultimate Streaming Experience</title>
  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Login Page -->
   <div class="login-page" id="loginPage">
     <div class="login-container">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
-        alt="YouTube Logo"
-        class="youtube-logo-login"
-      />
-      <h1 class="login-title">Welcome Back</h1>
-      <p class="login-subtitle">Sign in to continue to YouTube</p>
+      <div class="suffutube-logo">SuffuTube</div>
+      <h1 class="login-title">Welcome to the Future</h1>
+      <p class="login-subtitle">Sign in to experience next-gen streaming</p>
       
       <form id="loginForm">
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email" required placeholder="Enter your email">
         </div>
         
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password" required placeholder="Enter your password">
         </div>
         
-        <button type="submit" class="login-btn">Sign In</button>
+        <button type="submit" class="login-btn">Enter SuffuTube</button>
         
         <div class="error-message" id="errorMessage">
           Invalid email or password. Please try again.
@@ -38,35 +35,31 @@
         
         <div class="loading" id="loading">
           <div class="loading-spinner"></div>
-          <p>Signing you in...</p>
+          <p>Launching your experience...</p>
         </div>
       </form>
       
       <div class="demo-users">
-        <div class="demo-title">Demo Users (Click to auto-fill)</div>
-        <div class="demo-user" data-email="sufiyan@youtube.com" data-password="password123">
-          📧 sufiyan@gmail.com | 🔑 password123
+        <div class="demo-title">Quick Access (Click to auto-fill)</div>
+        <div class="demo-user" data-email="sufiyan@suffutube.com" data-password="password123">
+          🚀 sufiyan@suffutube.com | 🔑 password123
         </div>
-        <div class="demo-user" data-email="admin@youtube.com" data-password="admin456">
-          📧 admin@gmail.com | 🔑 admin456
+        <div class="demo-user" data-email="admin@suffutube.com" data-password="admin456">
+          👑 admin@suffutube.com | 🔑 admin456
         </div>
       </div>
     </div>
   </div>
 
-  <!-- YouTube Main App -->
-  <div class="youtube-app" id="youtubeApp" style="display: none;">
+  <!-- SuffuTube Main App -->
+  <div class="suffutube-app" id="youtubeApp" style="display: none;">
     <header class="header">
       <div class="header-left">
         <span class="material-icons menu-icon">menu</span>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
-          alt="YouTube Logo"
-          class="youtube-logo"
-        />
+        <div class="suffutube-logo-header">SuffuTube</div>
       </div>
       <div class="header-middle">
-        <input type="text" placeholder="Search" class="search-bar" />
+        <input type="text" placeholder="Discover amazing content..." class="search-bar" />
         <button class="search-button">
           <span class="material-icons">search</span>
         </button>
@@ -78,12 +71,12 @@
         <div class="user-info">
           <span id="currentUserName">User</span>
           <img
-            src="https://i.pravatar.cc/30?img=68"
+            src="https://i.pravatar.cc/35?img=68"
             alt="User Avatar"
             class="user-avatar"
             id="userAvatar"
           />
-          <button class="logout-btn" id="logoutBtn">Logout</button>
+          <button class="logout-btn" id="logoutBtn">Exit</button>
         </div>
       </div>
     </header>
@@ -96,11 +89,11 @@
         </div>
         <div class="sidebar-item">
           <span class="material-icons">explore</span>
-          <span>Explore</span>
+          <span>Discover</span>
         </div>
         <div class="sidebar-item">
           <span class="material-icons">subscriptions</span>
-          <span>Subscriptions</span>
+          <span>Following</span>
         </div>
         <hr />
         <div class="sidebar-item">
@@ -124,7 +117,7 @@
           <span>Liked videos</span>
         </div>
         <hr />
-        <h3>SUBSCRIPTIONS</h3>
+        <h3>Following</h3>
         <div id="subscriptions-list"></div>
       </aside>
 
