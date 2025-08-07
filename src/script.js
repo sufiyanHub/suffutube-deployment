@@ -1,16 +1,16 @@
 // Dummy user data
 const users = [
   {
-    email: 'sufiyan@youtube.com',
+    email: 'sufiyan@suffutube.com',
     password: 'password123',
     name: 'Sufiyan Mohd',
-    avatar: 'https://i.pravatar.cc/30?img=68'
+    avatar: 'https://i.pravatar.cc/35?img=68'
   },
   {
-    email: 'admin@youtube.com',
+    email: 'admin@suffutube.com',
     password: 'admin456',
     name: 'Admin User',
-    avatar: 'https://i.pravatar.cc/30?img=1'
+    avatar: 'https://i.pravatar.cc/35?img=1'
   }
 ];
 
@@ -19,8 +19,8 @@ const videos = [
     {
         thumbnail: 'https://img.youtube.com/vi/p6ca7gq5H70/maxresdefault.jpg',
         title: 'Jo Tu Nahi To Aisa Main Chehra|| Maand Slowed and Reverb',
-        channelName: 'Tech Innovations',
-        channelAvatar: 'https://i.pravatar.cc/40?img=1',
+        channelName: 'Music Vibes',
+        channelAvatar: 'https://i.pravatar.cc/45?img=1',
         views: '2.3M',
         uploaded: '3 days ago',
         videoId: 'p6ca7gq5H70'
@@ -28,8 +28,8 @@ const videos = [
     {
         thumbnail: 'https://img.youtube.com/vi/lh5f69t7L9A/maxresdefault.jpg',
         title: 'Building a Three-Tier Architecture with EC2, RDS, ALB, ACM, and Route 53',
-        channelName: 'Gaming World',
-        channelAvatar: 'https://i.pravatar.cc/40?img=2',
+        channelName: 'Tech Masters',
+        channelAvatar: 'https://i.pravatar.cc/45?img=2',
         views: '1.8M',
         uploaded: '1 week ago',
         videoId: 'lh5f69t7L9A'
@@ -37,8 +37,8 @@ const videos = [
     {
         thumbnail: 'https://img.youtube.com/vi/QxddU3sjVRY/maxresdefault.jpg',
         title: 'Shikayat by AUR | شکایت (Official Music Video)',
-        channelName: 'Science Hub',
-        channelAvatar: 'https://i.pravatar.cc/40?img=3',
+        channelName: 'Indie Sounds',
+        channelAvatar: 'https://i.pravatar.cc/45?img=3',
         views: '950K',
         uploaded: '5 days ago',
         videoId: 'QxddU3sjVRY'
@@ -46,8 +46,8 @@ const videos = [
     {
         thumbnail: 'https://img.youtube.com/vi/VCy6o6WPgu8/maxresdefault.jpg',
         title: 'Aaram Haram Hai Success Ke Liye | SRK Motivation',
-        channelName: 'Adventure Travel',
-        channelAvatar: 'https://i.pravatar.cc/40?img=4',
+        channelName: 'Motivation Hub',
+        channelAvatar: 'https://i.pravatar.cc/45?img=4',
         views: '3.1M',
         uploaded: '2 weeks ago',
         videoId: 'VCy6o6WPgu8'
@@ -55,8 +55,8 @@ const videos = [
     {
         thumbnail: 'https://img.youtube.com/vi/_T3vfkl-3Vk/maxresdefault.jpg',
         title: 'Kubernetes Deployment Strategies Explained (Hands-On Project) | Crack DevOps Jobs',
-        channelName: 'Design Masters',
-        channelAvatar: 'https://i.pravatar.cc/40?img=5',
+        channelName: 'DevOps Pro',
+        channelAvatar: 'https://i.pravatar.cc/45?img=5',
         views: '1.2M',
         uploaded: '4 days ago',
         videoId: '_T3vfkl-3Vk'
@@ -64,8 +64,8 @@ const videos = [
     {
         thumbnail: 'https://img.youtube.com/vi/bcglgTOpSxU/maxresdefault.jpg',
         title: 'Professional Cooking Tips - Chef Secrets',
-        channelName: 'Culinary Expert',
-        channelAvatar: 'https://i.pravatar.cc/40?img=6',
+        channelName: 'Culinary Masters',
+        channelAvatar: 'https://i.pravatar.cc/45?img=6',
         views: '2.7M',
         uploaded: '1 week ago',
         videoId: 'bcglgTOpSxU'
@@ -73,17 +73,17 @@ const videos = [
     {
         thumbnail: 'https://img.youtube.com/vi/dEU2ibHQnjM/maxresdefault.jpg',
         title: 'WORK HARD !!!',
-        channelName: 'Fitness Pro',
-        channelAvatar: 'https://i.pravatar.cc/40?img=7',
+        channelName: 'Fitness Elite',
+        channelAvatar: 'https://i.pravatar.cc/45?img=7',
         views: '4.2M',
         uploaded: '6 days ago',
         videoId: 'dEU2ibHQnjM'
     },
     {
         thumbnail: 'https://img.youtube.com/vi/pxMUZavn3uY/maxresdefault.jpg',
-        title: 'Try Not To Laugh at Viral Hakla Shahrukh Khan + Fake Baba Roast ',
-        channelName: 'Studio Sessions',
-        channelAvatar: 'https://i.pravatar.cc/40?img=8',
+        title: 'Try Not To Laugh at Viral Hakla Shahrukh Khan + Fake Baba Roast',
+        channelName: 'Comedy Central',
+        channelAvatar: 'https://i.pravatar.cc/45?img=8',
         views: '1.5M',
         uploaded: '3 days ago',
         videoId: 'pxMUZavn3uY'
@@ -91,8 +91,8 @@ const videos = [
     {
         thumbnail: 'https://img.youtube.com/vi/v06Gsp8hDdc/maxresdefault.jpg',
         title: 'Educational Documentary - Life Changing',
-        channelName: 'Learning Channel',
-        channelAvatar: 'https://i.pravatar.cc/40?img=9',
+        channelName: 'Knowledge Stream',
+        channelAvatar: 'https://i.pravatar.cc/45?img=9',
         views: '3.8M',
         uploaded: '1 week ago',
         videoId: 'v06Gsp8hDdc'
@@ -101,12 +101,12 @@ const videos = [
 
 // Subscription data
 const subscriptions = [
-  { name: 'Tech Innovations', avatar: 'https://i.pravatar.cc/30?img=1' },
-  { name: 'Gaming World', avatar: 'https://i.pravatar.cc/30?img=2' },
-  { name: 'Science Hub', avatar: 'https://i.pravatar.cc/30?img=3' },
-  { name: 'Adventure Travel', avatar: 'https://i.pravatar.cc/30?img=4' },
-  { name: 'Design Masters', avatar: 'https://i.pravatar.cc/30?img=5' },
-  { name: 'Culinary Expert', avatar: 'https://i.pravatar.cc/30?img=6' }
+  { name: 'Music Vibes', avatar: 'https://i.pravatar.cc/28?img=1' },
+  { name: 'Tech Masters', avatar: 'https://i.pravatar.cc/28?img=2' },
+  { name: 'Indie Sounds', avatar: 'https://i.pravatar.cc/28?img=3' },
+  { name: 'Motivation Hub', avatar: 'https://i.pravatar.cc/28?img=4' },
+  { name: 'DevOps Pro', avatar: 'https://i.pravatar.cc/28?img=5' },
+  { name: 'Culinary Masters', avatar: 'https://i.pravatar.cc/28?img=6' }
 ];
 
 // DOM Elements
@@ -240,9 +240,9 @@ function handleLogin(e) {
     const user = users.find(u => u.email === email && u.password === password);
     if (user) {
       storeUserSession(user);
-      showYouTubeApp(user);
+      showSuffuTubeApp(user);
     } else {
-      showError('Invalid email or password. Please try again.');
+      showError('Invalid credentials. Please check your email and password.');
     }
   }, 1500);
 }
@@ -291,15 +291,13 @@ function getCurrentUser() {
 function checkExistingLogin() {
   const user = getCurrentUser();
   if (user) {
-    showYouTubeApp(user);
+    showSuffuTubeApp(user);
   }
 }
 
-function showYouTubeApp(user) {
+function showSuffuTubeApp(user) {
   if (loginPage) loginPage.style.display = 'none';
   if (youtubeApp) youtubeApp.style.display = 'block';
-  
-  document.body.style.background = '#f9f9f9';
   
   if (currentUserName) currentUserName.textContent = user.name;
   if (userAvatar) userAvatar.src = user.avatar;
@@ -314,8 +312,6 @@ function logout() {
   
   if (youtubeApp) youtubeApp.style.display = 'none';
   if (loginPage) loginPage.style.display = 'flex';
-  
-  document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
   
   if (loginForm) loginForm.reset();
   closeVideoModal();
@@ -343,8 +339,15 @@ function renderVideos() {
                  class="video-thumbnail" />
             <div class="play-button-overlay">
               <svg width="68" height="48" viewBox="0 0 68 48" fill="none">
-                <path d="M66.52 7.74C65.11 2.98 61.39 -0.75 56.63 -2.16C51.77 -3.88 30.16 -3.88 30.16 -3.88S8.54 -3.88 3.68 -2.16C-1.08 -0.75 -4.81 2.98 -6.22 7.74C-7.94 12.6 -7.94 23.02 -7.94 23.02S-7.94 33.44 -6.22 38.3C-4.81 43.06 -1.08 46.79 3.68 48.2C8.54 49.92 30.16 49.92 30.16 49.92S51.77 49.92 56.63 48.2C61.39 46.79 65.11 43.06 66.52 38.3C68.24 33.44 68.24 23.02 68.24 23.02S68.24 12.6 66.52 7.74Z" fill="red"/>
+                <path d="M66.52 7.74C65.11 2.98 61.39 -0.75 56.63 -2.16C51.77 -3.88 30.16 -3.88 30.16 -3.88S8.54 -3.88 3.68 -2.16C-1.08 -0.75 -4.81 2.98 -6.22 7.74C-7.94 12.6 -7.94 23.02 -7.94 23.02S-7.94 33.44 -6.22 38.3C-4.81 43.06 -1.08 46.79 3.68 48.2C8.54 49.92 30.16 49.92 30.16 49.92S51.77 49.92 56.63 48.2C61.39 46.79 65.11 43.06 66.52 38.3C68.24 33.44 68.24 23.02 68.24 23.02S68.24 12.6 66.52 7.74Z" fill="url(#playGradient)"/>
                 <path d="M24.16 33.02L44.16 23.02L24.16 13.02V33.02Z" fill="white"/>
+                <defs>
+                  <linearGradient id="playGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#4ecdc4;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#45b7d1;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
               </svg>
             </div>
           </div>
@@ -388,209 +391,6 @@ function toggleSidebar() {
 }
 
 function addStyles() {
-  const styles = `
-    <style>
-      .video-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 1000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .modal-content {
-        background: white;
-        border-radius: 8px;
-        width: 90%;
-        max-width: 900px;
-        overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      }
-
-      .modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 20px;
-        border-bottom: 1px solid #eee;
-        background: #f8f9fa;
-      }
-
-      .modal-title {
-        margin: 0;
-        font-size: 18px;
-        font-weight: 600;
-        color: #333;
-      }
-
-      .modal-close {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        color: #666;
-        padding: 0;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: background-color 0.2s;
-      }
-
-      .modal-close:hover {
-        background-color: #e9ecef;
-        color: #333;
-      }
-
-      .video-container {
-        height: 500px;
-        overflow: hidden;
-      }
-
-      .video-container iframe {
-        width: 100%;
-        height: 100%;
-      }
-
-      .video-card-container {
-        transition: transform 0.2s ease;
-        margin-bottom: 20px;
-      }
-      
-      .video-card-container:hover {
-        transform: translateY(-2px);
-      }
-      
-      .video-card {
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        transition: box-shadow 0.3s ease;
-      }
-      
-      .video-card:hover {
-        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-      }
-      
-      .thumbnail-container {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        aspect-ratio: 16/9;
-      }
-      
-      .play-button-overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-        z-index: 2;
-      }
-      
-      .video-card-container:hover .play-button-overlay {
-        opacity: 0.9;
-      }
-      
-      .video-thumbnail {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: filter 0.3s ease;
-      }
-      
-      .video-card-container:hover .video-thumbnail {
-        filter: brightness(0.8);
-      }
-      
-      .video-details {
-        display: flex;
-        padding: 12px;
-        gap: 12px;
-      }
-      
-      .channel-avatar-small {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        flex-shrink: 0;
-        object-fit: cover;
-      }
-      
-      .video-info {
-        flex: 1;
-        min-width: 0;
-      }
-      
-      .video-title {
-        margin: 0 0 6px 0;
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 1.3;
-        color: #333;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      
-      .channel-name {
-        margin: 0 0 4px 0;
-        font-size: 13px;
-        color: #666;
-        font-weight: 500;
-      }
-      
-      .video-meta {
-        margin: 0;
-        font-size: 13px;
-        color: #888;
-      }
-      
-      #video-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
-        padding: 20px;
-      }
-      
-      @media (max-width: 768px) {
-        .modal-content {
-          width: 95%;
-        }
-        
-        .video-container {
-          height: 300px;
-        }
-        
-        #video-grid {
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          gap: 15px;
-          padding: 15px;
-        }
-        
-        .video-title {
-          font-size: 13px;
-        }
-        
-        .channel-name, .video-meta {
-          font-size: 12px;
-        }
-      }
-    </style>
-  `;
-
-  document.head.insertAdjacentHTML('beforeend', styles);
+  // This function is kept for compatibility but styles are now in CSS file
+  // Additional dynamic styles can be added here if needed
 }
