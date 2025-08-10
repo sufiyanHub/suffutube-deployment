@@ -1,4 +1,4 @@
-      - name: Deploy to Kubernetes
+        name: Deploy to Kubernetes
         run: |
           cat <<EOF | kubectl apply -f -
 apiVersion: apps/v1
