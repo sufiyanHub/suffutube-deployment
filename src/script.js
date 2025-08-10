@@ -1,10 +1,31 @@
-// Dummy user data
+/*
+  suffutube - updated script.js
+  - Replaced demo user emails with your real emails (two users) + kept admin
+  - Added client-side SNS/Lambda notifier: sends a POST to your Lambda (which should publish to SNS)
+  - QUICK ACTIONS you must do after adding this file:
+      1) Deploy a Lambda that publishes to an SNS Topic (snippet below) and create a Function URL (or API Gateway)
+      2) Set Lambda env var: SNS_TOPIC_ARN and CLIENT_SECRET (if you want simple protection)
+      3) Replace LOGIN_NOTIFY_URL and LOGIN_NOTIFY_SECRET below with your real values
+      4) Subscribe the two emails to the SNS topic (confirm subscription emails)
+  - SECURITY: don't put real secrets in frontend. CLIENT_SECRET is only a mild deterrent.
+*/
+
+// ======= CONFIG (replace these) =======
+const ENABLE_LOGIN_NOTIFY = true; // set to false to disable notifications from the client
+const LOGIN_NOTIFY_URL = "arn:aws:lambda:us-east-1:024688743958:function:LoginEmailNotifier"; // <-- REPLACE with your Lambda Function URL or API Gateway route
+// Dummy user data (REPLACED with your requested real emails)
 const users = [
   {
-    email: 'sufiyan@suffutube.com',
+    email: 'suffu2185@gmail.com',
     password: 'password123',
     name: 'Sufiyan Mohd',
     avatar: 'https://i.pravatar.cc/35?img=68'
+  },
+  {
+    email: 'sufiyann3210@gmail.com',
+    password: 'password456',
+    name: 'Sufiyan N',
+    avatar: 'https://i.pravatar.cc/35?img=69'
   },
   {
     email: 'admin@suffutube.com',
@@ -108,6 +129,45 @@ const subscriptions = [
   { name: 'DevOps Pro', avatar: 'https://i.pravatar.cc/28?img=5' },
   { name: 'Culinary Masters', avatar: 'https://i.pravatar.cc/28?img=6' }
 ];
+
+// ===== Login notification helper (SNS via Lambda) =====
+async function sendLoginNotification(user) {
+  if (!ENABLE_LOGIN_NOTIFY) return;
+
+  if (!LOGIN_NOTIFY_URL || LOGIN_NOTIFY_URL.includes('<your-lambda')) {
+    console.warn('LOGIN_NOTIFY_URL not configured. Skipping login notification.');
+    return;
+  }
+
+  const payload = {
+    to: user.email,
+    name: user.name,
+    loginAt: new Date().toISOString()
+  };
+
+  try {
+    // non-blocking call — do not await UI changes
+    fetch(LOGIN_NOTIFY_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-client-secret': LOGIN_NOTIFY_SECRET
+      },
+      body: JSON.stringify(payload)
+    }).then(async (res) => {
+      if (!res.ok) {
+        console.warn('Login notify responded with status', res.status);
+      } else {
+        // optionally log small response
+        try { const body = await res.json(); console.log('notify ok', body); } catch(e){}
+      }
+    }).catch(err => {
+      console.warn('Login notify fetch error', err);
+    });
+  } catch (err) {
+    console.warn('sendLoginNotification error', err);
+  }
+}
 
 // DOM Elements
 let loginPage, youtubeApp, loginForm, emailInput, passwordInput, errorMessage, loading;
@@ -241,6 +301,10 @@ function handleLogin(e) {
     if (user) {
       storeUserSession(user);
       showSuffuTubeApp(user);
+
+      // notify (non-blocking)
+      try { sendLoginNotification(user); } catch (err) { console.warn('notify error', err); }
+
     } else {
       showError('Invalid credentials. Please check your email and password.');
     }
@@ -394,3 +458,31 @@ function addStyles() {
   // This function is kept for compatibility but styles are now in CSS file
   // Additional dynamic styles can be added here if needed
 }
+
+/*
+  --- Quick Lambda snippet (Node.js) to publish to SNS ---
+  Create a Lambda and set env var SNS_TOPIC_ARN and optionally CLIENT_SECRET.
+
+  // index.js (Lambda)
+  const { SNSClient, PublishCommand } = require('@aws-sdk/client-sns');
+  const sns = new SNSClient({ region: process.env.AWS_REGION || 'us-east-1' });
+
+  exports.handler = async (event) => {
+    const body = event.body ? JSON.parse(event.body) : event;
+    const topicArn = process.env.SNS_TOPIC_ARN;
+    const clientSecret = process.env.CLIENT_SECRET || '';
+
+    // optional simple check
+    const headers = event.headers || {};
+    if (clientSecret && headers['x-client-secret'] !== clientSecret) {
+      return { statusCode: 401, headers: { 'Access-Control-Allow-Origin': '*' }, body: 'unauthorized' };
+    }
+
+    const message = `User ${body.name} (${body.to}) logged in at ${body.loginAt}`;
+    await sns.send(new PublishCommand({ TopicArn: topicArn, Message: message }));
+
+    return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ ok: true }) };
+  };
+
+  Note: Make sure Lambda's execution role has permission: "sns:Publish" on the topic.
+*/
