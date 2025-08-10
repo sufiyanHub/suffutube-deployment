@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SuffuTube - Your Ultimate Streaming Experience</title>
- <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -24,7 +24,12 @@
         
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required placeholder="Enter your password">
+          <div class="password-container">
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+            <button type="button" class="password-toggle" id="passwordToggle">
+              <span class="material-icons">visibility_off</span>
+            </button>
+          </div>
         </div>
         
         <button type="submit" class="login-btn">Enter SuffuTube</button>
@@ -42,12 +47,13 @@
       <div class="demo-users">
         <div class="demo-title">Quick Access (Click to auto-fill)</div>
         <div class="demo-user" data-email="suffu2185@gmail.com" data-password="password123">
-  🚀 suffu2185@gmail.com | 🔑 password123
-</div>
-<div class="demo-user" data-email="sufiyann3210@gmail.com" data-password="password456">
-  🚀 sufiyann3210@gmail.com | 🔑 password456
-</div>
-
+          🚀 suffu2185@gmail.com | 🔑 password123
+        </div>
+        <div class="demo-user" data-email="sufiyann3210@gmail.com" data-password="password456">
+          🚀 sufiyann3210@gmail.com | 🔑 password456
+        </div>
+        <div class="demo-user" data-email="admin@suffutube.com" data-password="admin456">
+          👑 admin@suffutube.com | 🔑 admin456
         </div>
       </div>
     </div>
@@ -61,15 +67,24 @@
         <div class="suffutube-logo-header">SuffuTube</div>
       </div>
       <div class="header-middle">
-        <input type="text" placeholder="Discover amazing content..." class="search-bar" />
-        <button class="search-button">
+        <input type="text" placeholder="Discover amazing content..." class="search-bar" id="searchInput" />
+        <button class="search-button" id="searchBtn">
           <span class="material-icons">search</span>
+        </button>
+        <button class="voice-search-btn" id="voiceSearchBtn" title="Voice Search">
+          <span class="material-icons">mic</span>
         </button>
       </div>
       <div class="header-right">
-        <span class="material-icons">videocam</span>
-        <span class="material-icons">apps</span>
-        <span class="material-icons">notifications</span>
+        <span class="material-icons header-icon" id="createBtn" title="Create">videocam</span>
+        <span class="material-icons header-icon" id="appsBtn" title="Apps">apps</span>
+        <span class="material-icons header-icon notification-icon" id="notificationBtn" title="Notifications">
+          notifications
+          <span class="notification-badge">3</span>
+        </span>
+        <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+          <span class="material-icons">dark_mode</span>
+        </div>
         <div class="user-info">
           <span id="currentUserName">User</span>
           <img
@@ -83,51 +98,121 @@
       </div>
     </header>
 
+    <!-- Feature Buttons Bar -->
+    <div class="feature-buttons">
+      <button class="feature-btn active" id="allBtn">
+        <span class="material-icons">home</span>
+        All
+      </button>
+      <button class="feature-btn" id="musicBtn">
+        <span class="material-icons">music_note</span>
+        Music
+      </button>
+      <button class="feature-btn" id="techBtn">
+        <span class="material-icons">computer</span>
+        Tech
+      </button>
+      <button class="feature-btn" id="gamingBtn">
+        <span class="material-icons">sports_esports</span>
+        Gaming
+      </button>
+      <button class="feature-btn" id="newsBtn">
+        <span class="material-icons">newspaper</span>
+        News
+      </button>
+      <button class="feature-btn" id="sportsBtn">
+        <span class="material-icons">sports_soccer</span>
+        Sports
+      </button>
+      <button class="feature-btn" id="cookingBtn">
+        <span class="material-icons">restaurant</span>
+        Cooking
+      </button>
+    </div>
+
     <div class="main-content">
       <aside class="sidebar">
         <div class="sidebar-item active">
           <span class="material-icons">home</span>
           <span>Home</span>
         </div>
-        <div class="sidebar-item">
+        <div class="sidebar-item" id="exploreBtn">
           <span class="material-icons">explore</span>
           <span>Discover</span>
         </div>
-        <div class="sidebar-item">
+        <div class="sidebar-item" id="subscriptionsBtn">
           <span class="material-icons">subscriptions</span>
           <span>Following</span>
         </div>
         <hr />
-        <div class="sidebar-item">
+        <div class="sidebar-item" id="libraryBtn">
           <span class="material-icons">video_library</span>
           <span>Library</span>
         </div>
-        <div class="sidebar-item">
+        <div class="sidebar-item" id="historyBtn">
           <span class="material-icons">history</span>
           <span>History</span>
         </div>
-        <div class="sidebar-item">
+        <div class="sidebar-item" id="yourVideosBtn">
           <span class="material-icons">ondemand_video</span>
           <span>Your videos</span>
         </div>
-        <div class="sidebar-item">
+        <div class="sidebar-item" id="watchLaterBtn">
           <span class="material-icons">watch_later</span>
           <span>Watch later</span>
         </div>
-        <div class="sidebar-item">
+        <div class="sidebar-item" id="likedBtn">
           <span class="material-icons">thumb_up_alt</span>
           <span>Liked videos</span>
         </div>
         <hr />
         <h3>Following</h3>
         <div id="subscriptions-list"></div>
+        <hr />
+        <div class="sidebar-item" id="settingsBtn">
+          <span class="material-icons">settings</span>
+          <span>Settings</span>
+        </div>
+        <div class="sidebar-item" id="helpBtn">
+          <span class="material-icons">help_outline</span>
+          <span>Help</span>
+        </div>
       </aside>
 
-      <main class="video-grid" id="video-grid">
+      <main class="video-content">
+        <div class="video-grid" id="video-grid">
+          <!-- Videos will be dynamically loaded here -->
+        </div>
+        
+        <!-- Search Results Container -->
+        <div class="search-results" id="searchResults" style="display: none;">
+          <h2>Search Results</h2>
+          <div class="search-grid" id="searchGrid">
+            <!-- Search results will be shown here -->
+          </div>
+        </div>
+        
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults" style="display: none;">
+          <div class="no-results-content">
+            <span class="material-icons">search_off</span>
+            <h3>No results found</h3>
+            <p>Try different keywords or check your spelling</p>
+          </div>
+        </div>
       </main>
     </div>
   </div>
 
- <script src="script.js"></script>
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span class="toast-icon material-icons">info</span>
+    <span class="toast-message">This is a notification</span>
+    <button class="toast-close" id="toastClose">
+      <span class="material-icons">close</span>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
