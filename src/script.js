@@ -1,49 +1,67 @@
-/* config: update LOGIN_NOTIFY_URL to your Lambda Function URL (NOT the ARN) */
-const ENABLE_LOGIN_NOTIFY = true; // set false to disable notifications
-const LOGIN_NOTIFY_URL = "https://4i3ybhl7or3alh7crzsppythxa0bmtsm.lambda-url.us-east-1.on.aws/"; // <- REPLACE with your Lambda Function URL (example)
- // e.g. "https://abc123xyz.lambda-url.us-east-1.on.aws/"
+// ===== CONFIG =====
+const LAMBDA_URL = "https://4i3ybhl7or3alh7crzsppythxa0bmtsm.lambda-url.us-east-1.on.aws/"; // Replace with your Function URL
 
-/* Dummy user data (already set to your requested real emails) */
-const users = [
-  { email: 'suffu2185@gmail.com', password: 'password123', name: 'Sufiyan Mohd', avatar: 'https://i.pravatar.cc/35?img=68' },
-  { email: 'sufiyann3210@gmail.com', password: 'password456', name: 'Sufiyan N', avatar: 'https://i.pravatar.cc/35?img=69' },
-  { email: 'admin@suffutube.com', password: 'admin456', name: 'Admin User', avatar: 'https://i.pravatar.cc/35?img=1' }
-];
+// ===== ELEMENTS =====
+const loginForm = document.getElementById("loginForm");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const errorMessage = document.getElementById("errorMessage");
+const loading = document.getElementById("loading");
+const loginPage = document.getElementById("loginPage");
+const youtubeApp = document.getElementById("youtubeApp");
+const currentUserName = document.getElementById("currentUserName");
+const demoUsers = document.querySelectorAll(".demo-user");
 
-/* ---------- login notify helper (calls Lambda Function URL) ---------- */
-async function sendLoginNotification(user) {
-  if (!ENABLE_LOGIN_NOTIFY) return;
+// ===== DEMO USERS AUTO-FILL =====
+demoUsers.forEach(user => {
+  user.addEventListener("click", () => {
+    emailInput.value = user.getAttribute("data-email");
+    passwordInput.value = user.getAttribute("data-password");
+  });
+});
 
-  // sanity: must be a real HTTPS URL
-  if (!LOGIN_NOTIFY_URL || !LOGIN_NOTIFY_URL.startsWith('https://')) {
-    console.warn('LOGIN_NOTIFY_URL not configured. Skipping login notification.');
+// ===== FORM SUBMIT =====
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  errorMessage.style.display = "none";
+  loading.style.display = "block";
+
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  // Simple dummy login validation
+  if (!email || !password) {
+    loading.style.display = "none";
+    errorMessage.style.display = "block";
     return;
   }
 
-  const payload = {
-    username: user.email,
-    name: user.name,
-    loginAt: new Date().toISOString()
-  };
+  try {
+    // Call Lambda to send SNS notification
+    const res = await fetch(LAMBDA_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: email })
+    });
 
-  // Non-blocking but log result for debug
-  fetch(LOGIN_NOTIFY_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
-  .then(async res => {
-    if (!res.ok) {
-      console.warn('Login notify responded with status', res.status);
-      try { const txt = await res.text(); console.warn('body:', txt); } catch(e) {}
-    } else {
-      try { const j = await res.json(); console.log('notify ok', j); } catch(e){ console.log('notify ok (no json)'); }
-    }
-  })
-  .catch(err => {
-    console.warn('Login notify fetch error', err);
-  });
-}
+    if (!res.ok) throw new Error("Lambda request failed");
+
+    // Simulate login success after Lambda notification
+    setTimeout(() => {
+      loading.style.display = "none";
+      loginPage.style.display = "none";
+      youtubeApp.style.display = "block";
+      currentUserName.textContent = email.split("@")[0];
+    }, 1000);
+
+  } catch (err) {
+    console.error("Login error:", err);
+    loading.style.display = "none";
+    errorMessage.style.display = "block";
+  }
+});
+
+
 
 
 // Updated video data with your provided video IDs
