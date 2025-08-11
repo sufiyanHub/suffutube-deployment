@@ -63,7 +63,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          cat <<EOF | kubectl apply --validate=false -f -
+          cat <<EOF | kubectl apply --server-side --validate=false -f -
           apiVersion: apps/v1
           kind: Deployment
           metadata:
